@@ -7,9 +7,9 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -27,8 +27,9 @@ import javax.persistence.Id;
 public class Driver {
 
     @Id
-    private String driveId;
+    private String driverId;
     private String driverNIC;
+    private String driverLicenseNo;
     @Embedded
     private Name driverName;
     private String driverAddress;

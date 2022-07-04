@@ -35,5 +35,5 @@ public class Customer {
     private String customerEmail;
     private String customerContactNo;
 
-
+    
 }

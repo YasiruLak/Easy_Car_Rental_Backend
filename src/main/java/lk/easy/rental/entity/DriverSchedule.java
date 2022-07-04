@@ -5,8 +5,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -21,8 +20,20 @@ import javax.persistence.Id;
 @Data
 @Entity
 @ToString
+@IdClass(DriverSchedule_PK.class)
 public class DriverSchedule {
 
     @Id
-    private String scheduleId;
+    private String driverId;
+    @Id
+    private String bookingId;
+
+    @ManyToOne
+    @JoinColumn(name = "driverId",referencedColumnName = "driverId",insertable = false,updatable = false)
+    private Driver driver;
+
+    @ManyToOne
+    @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
+    private Booking booking;
+
 }

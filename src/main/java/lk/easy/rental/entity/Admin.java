@@ -28,6 +28,7 @@ public class Admin {
 
     @Id
     private String adminId;
+    private String adminNic;
     @Embedded
     private Name name;
     private String address;

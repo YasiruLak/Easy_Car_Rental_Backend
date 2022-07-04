@@ -6,10 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
+import java.util.List;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -35,5 +35,17 @@ public class Booking {
     private double rentalFee;
     private double damageFee;
     private RequestType DriverRequestType;
+
+    @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REFRESH})
+    @JoinColumn(name = "custId",referencedColumnName = "customerId",nullable = false)
+    private Customer customer;
+
+    @OneToMany(mappedBy = "booking")
+    private List<BookingDetails> bookingDetails;
+
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
+    private List<DriverSchedule> driverSchedules;
+
+
 
 }
