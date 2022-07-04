@@ -1,5 +1,6 @@
 package lk.easy.rental.advisor;
 
+import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.exception.ValidationException;
 import lk.easy.rental.util.ResponseUtil;
@@ -34,6 +35,11 @@ public class AppWideExceptionHandler {
 
     @ExceptionHandler(ValidationException.class)
     public ResponseEntity<ResponseUtil> handleValidationException(Exception e) {
+        return new ResponseEntity<>(new ResponseUtil(500, "Error", e.getMessage()), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(DuplicateEntryException.class)
+    public ResponseEntity<ResponseUtil> duplicateEntryException(Exception e) {
         return new ResponseEntity<>(new ResponseUtil(500, "Error", e.getMessage()), HttpStatus.BAD_REQUEST);
     }
 }

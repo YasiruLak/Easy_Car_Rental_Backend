@@ -1,9 +1,13 @@
 package lk.easy.rental.dto;
 
+import lk.easy.rental.embeded.Name;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+
+import javax.persistence.Embedded;
+import javax.persistence.Id;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -19,10 +23,11 @@ import lombok.ToString;
 @ToString
 public class CustomerDTO {
 
-    private String nic;
-    private String name;
-    private String address;
-    private String email;
-    private String contactNo;
-    private String drivingLicenseNo;
+    private String customerId;
+    private String customerNIC;
+    private Name customerName;
+    private String customerAddress;
+    private String customerDrivingLicenseNo;
+    private String customerEmail;
+    private String customerContactNo;
 }

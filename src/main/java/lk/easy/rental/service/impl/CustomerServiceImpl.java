@@ -1,7 +1,12 @@
 package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.entity.Customer;
+import lk.easy.rental.exception.DuplicateEntryException;
+import lk.easy.rental.repo.CustomerRepo;
 import lk.easy.rental.service.CustomerService;
+import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,9 +23,20 @@ import java.util.List;
 @Service
 @Transactional
 public class CustomerServiceImpl implements CustomerService {
+
+    @Autowired
+    ModelMapper mapper;
+
+    @Autowired
+    CustomerRepo customerRepo;
+
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
-
+        if (!customerRepo.existsById(customerDTO.getCustomerId())){
+            customerRepo.save(mapper.map(customerDTO, Customer.class));
+        }else {
+            throw new DuplicateEntryException("Customer Already Exists");
+        }
     }
 
     @Override
