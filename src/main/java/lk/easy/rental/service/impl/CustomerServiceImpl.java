@@ -3,9 +3,11 @@ package lk.easy.rental.service.impl;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.exception.DuplicateEntryException;
+import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.CustomerRepo;
 import lk.easy.rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
+import org.modelmapper.TypeToken;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -41,21 +43,37 @@ public class CustomerServiceImpl implements CustomerService {
 
     @Override
     public void deleteCustomer(String id) {
-
+        if (customerRepo.existsById(id)){
+            customerRepo.deleteById(id);
+        }else {
+            throw new NotFoundException("Please check the Customer ID.. No Such Customer..!");
+        }
     }
 
     @Override
     public void updateCustomer(CustomerDTO customerDTO) {
-
+        if (customerRepo.existsById(customerDTO.getCustomerId())){
+            Customer map = mapper.map(customerDTO, Customer.class);
+            customerRepo.save(map);
+        }else {
+            throw new NotFoundException("No Such Customer To Update..! Please Check the ID..!");
+        }
     }
 
     @Override
     public CustomerDTO searchCustomer(String id) {
-        return null;
+        if (customerRepo.existsById(id)){
+            return mapper.map(customerRepo.findById(id).get(), CustomerDTO.class);
+        }else {
+            throw new NotFoundException("No Customer For " + id + " ..!");
+        }
     }
 
     @Override
     public List<CustomerDTO> getAllCustomer() {
-        return null;
+        if (!customerRepo.findAll().isEmpty()){
+            return mapper.map(customerRepo.findAll(), new TypeToken<List<CustomerDTO>>(){}.getType());
+        }throw new NotFoundException("No Such a Customer");
+
     }
 }
