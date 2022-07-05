@@ -23,8 +23,14 @@ import javax.persistence.Enumerated;
 @ToString
 public class UserDTO {
 
-    private String userId;
+    private int userId;
     private String userName;
     private String password;
     private Role role;
+
+    public UserDTO(String userName, String password, Role role) {
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+    }
 }

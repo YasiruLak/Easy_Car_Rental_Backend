@@ -36,10 +36,6 @@ public class Booking {
     private LocalTime pickUpTime;
     @Column(name = "return_date")
     private LocalDate returnDate;
-    @Column(name = "rental_fee")
-    private double rentalFee;
-    @Column(name = "damage_fee")
-    private double damageFee;
     @Enumerated(EnumType.STRING)
     @Column(name = "driver_request_type")
     private RequestType DriverRequestType;

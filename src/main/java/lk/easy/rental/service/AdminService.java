@@ -2,6 +2,7 @@ package lk.easy.rental.service;
 
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.DriverDTO;
+import lk.easy.rental.dto.UserDTO;
 
 import java.util.List;
 
@@ -15,9 +16,9 @@ import java.util.List;
  **/
 public interface AdminService {
 
-    void saveAdmin(AdminDTO adminDTO);
+    void saveAdmin(AdminDTO adminDTO, UserDTO userDTO);
     void deleteAdmin(String id);
-    void updateAdmin(AdminDTO adminDTO);
+    void updateAdmin(AdminDTO adminDTO, UserDTO userDTO);
     AdminDTO searchAdmin(String id);
     List<AdminDTO> getAllAdmin();
 }

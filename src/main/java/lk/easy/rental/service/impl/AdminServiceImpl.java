@@ -2,11 +2,14 @@ package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.DriverDTO;
+import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.entity.Admin;
 import lk.easy.rental.entity.Driver;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.AdminRepo;
+import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -34,12 +37,20 @@ public class AdminServiceImpl implements AdminService {
     @Autowired
     AdminRepo adminRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
     @Override
-    public void saveAdmin(AdminDTO adminDTO) {
+    public void saveAdmin(AdminDTO adminDTO, UserDTO userDTO) {
         if (!adminRepo.existsById(adminDTO.getAdminId())){
+            if (!userRepo.existsById(userDTO.getUserName())) {
             adminRepo.save(mapper.map(adminDTO, Admin.class));
+                userRepo.save(mapper.map(userDTO, User.class));
         }else {
-            throw new DuplicateEntryException("Driver Already Exists");
+            throw new DuplicateEntryException("User Name Already Exists");
+        }
+        }else{
+            throw new DuplicateEntryException("Admin Already Exists");
         }
     }
 
@@ -53,7 +64,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void updateAdmin(AdminDTO adminDTO) {
+    public void updateAdmin(AdminDTO adminDTO, UserDTO userDTO) {
         if (adminRepo.existsById(adminDTO.getAdminId())){
             Admin map = mapper.map(adminDTO, Admin.class);
             adminRepo.save(map);

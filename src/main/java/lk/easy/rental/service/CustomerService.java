@@ -1,6 +1,7 @@
 package lk.easy.rental.service;
 
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.UserDTO;
 
 import java.util.List;
 
@@ -14,9 +15,9 @@ import java.util.List;
  **/
 public interface CustomerService {
 
-    void saveCustomer(CustomerDTO customerDTO);
+    void saveCustomer(CustomerDTO customerDTO, UserDTO userDTO);
     void deleteCustomer(String id);
-    void updateCustomer(CustomerDTO customerDTO);
+    void updateCustomer(CustomerDTO customerDTO, UserDTO userDTO);
     CustomerDTO searchCustomer(String id);
     List<CustomerDTO> getAllCustomer();
 }

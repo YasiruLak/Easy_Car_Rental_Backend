@@ -2,6 +2,7 @@ package lk.easy.rental.controller;
 
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.DriverDTO;
+import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.service.AdminService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,8 +28,8 @@ public class AdminController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveAdmin(@RequestBody AdminDTO adminDTO){
-        adminService.saveAdmin(adminDTO);
+    public ResponseUtil saveAdmin(@RequestBody AdminDTO adminDTO, UserDTO userDTO){
+        adminService.saveAdmin(adminDTO,userDTO);
         return new ResponseUtil(200,"Saved",null);
     }
 
@@ -38,8 +39,8 @@ public class AdminController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateAdmin(@RequestBody AdminDTO adminDTO){
-        adminService.updateAdmin(adminDTO);
+    public ResponseUtil updateAdmin(@RequestBody AdminDTO adminDTO, UserDTO userDTO){
+        adminService.updateAdmin(adminDTO, userDTO);
         return new ResponseUtil(200,"Updated",null);
     }
 

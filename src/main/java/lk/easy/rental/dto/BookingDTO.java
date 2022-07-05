@@ -32,8 +32,6 @@ public class BookingDTO {
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
     private LocalDate returnDate;
-    private double rentalFee;
-    private double damageFee;
     private RequestType DriverRequestType;
     private CustomerDTO customer;
     private List<BookingDetailsDTO> bookingDetails;

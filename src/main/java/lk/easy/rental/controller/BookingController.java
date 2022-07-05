@@ -1,9 +1,8 @@
 package lk.easy.rental.controller;
 
-import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.BookingDTO;
 import lk.easy.rental.dto.DriverDTO;
-import lk.easy.rental.dto.UserDTO;
-import lk.easy.rental.service.DriverService;
+import lk.easy.rental.service.BookingService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,46 +12,46 @@ import org.springframework.web.bind.annotation.*;
 /**
  * @author : Yasiru Dahanayaka
  * @name : Car_Rental_Backend
- * @date : 7/4/2022
+ * @date : 7/5/2022
  * @month : 07
  * @year : 2022
  * @since : 0.1.0
  **/
 @RestController
-@RequestMapping("api/v1/driver")
+@RequestMapping("api/v1/booking")
 @CrossOrigin
-public class DriverController {
+public class BookingController {
 
     @Autowired
-    DriverService driverService;
+    BookingService bookingService;
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveDriver(@RequestBody DriverDTO driverDTO, UserDTO userDTO){
-        driverService.saveDriver(driverDTO, userDTO);
+    public ResponseUtil saveBooking(@RequestBody BookingDTO bookingDTO){
+        bookingService.saveBooking(bookingDTO);
         return new ResponseUtil(200,"Saved",null);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil getAllDrivers(){
-        return new ResponseUtil(200,"OK",driverService.getAllDriver());
+    public ResponseUtil getAllBooking(){
+        return new ResponseUtil(200,"OK",bookingService.getAllBooking());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateDriver(@RequestBody DriverDTO driverDTO, UserDTO userDTO){
-        driverService.updateDriver(driverDTO,userDTO);
+    public ResponseUtil updateBooking(@RequestBody BookingDTO bookingDTO){
+        bookingService.updateBooking(bookingDTO);
         return new ResponseUtil(200,"Updated",null);
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchDriver(@PathVariable String id){
-        DriverDTO driverDTO = driverService.searchDriver(id);
-        return new ResponseUtil(200,"Loaded", driverDTO);
+    public ResponseUtil searchBooking(@PathVariable String id){
+        BookingDTO bookingDTO = bookingService.searchBooking(id);
+        return new ResponseUtil(200,"Loaded", bookingDTO);
     }
 
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteDriver(@RequestParam String id){
-        driverService.deleteDriver(id);
+    public ResponseUtil deleteBooking(@RequestParam String id){
+        bookingService.deleteBooking(id);
         return new ResponseUtil(200,"Deleted",null);
     }
 }

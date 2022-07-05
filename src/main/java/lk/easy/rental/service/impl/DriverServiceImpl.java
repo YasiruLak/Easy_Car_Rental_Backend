@@ -2,11 +2,14 @@ package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.DriverDTO;
+import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Driver;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.DriverRepo;
+import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.DriverService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -34,13 +37,21 @@ public class DriverServiceImpl implements DriverService {
     @Autowired
     DriverRepo driverRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
     @Override
-    public void saveDriver(DriverDTO driverDTO) {
-        if (!driverRepo.existsById(driverDTO.getDriverId())){
-            driverRepo.save(mapper.map(driverDTO, Driver.class));
-        }else {
+    public void saveDriver(DriverDTO driverDTO, UserDTO userDTO) {
+        if (!driverRepo.existsById(driverDTO.getDriverId())) {
+            if (!userRepo.existsById(userDTO.getUserName())) {
+                driverRepo.save(mapper.map(driverDTO, Driver.class));
+                userRepo.save(mapper.map(userDTO, User.class));
+            } else {
+                throw new DuplicateEntryException("User Name Already Exists");
+            }
+        }else{
             throw new DuplicateEntryException("Driver Already Exists");
-        }
+            }
     }
 
     @Override
@@ -53,7 +64,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public void updateDriver(DriverDTO driverDTO) {
+    public void updateDriver(DriverDTO driverDTO, UserDTO userDTO) {
         if (driverRepo.existsById(driverDTO.getDriverId())){
             Driver map = mapper.map(driverDTO, Driver.class);
             driverRepo.save(map);

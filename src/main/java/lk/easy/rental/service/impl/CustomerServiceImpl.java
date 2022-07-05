@@ -1,10 +1,13 @@
 package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.entity.Customer;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.CustomerRepo;
+import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -32,14 +35,24 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     CustomerRepo customerRepo;
 
+    @Autowired
+    UserRepo userRepo;
+
     @Override
-    public void saveCustomer(CustomerDTO customerDTO) {
+    public void saveCustomer(CustomerDTO customerDTO, UserDTO userDTO) {
         if (!customerRepo.existsById(customerDTO.getCustomerId())){
-            customerRepo.save(mapper.map(customerDTO, Customer.class));
-        }else {
+            if (!userRepo.existsById(userDTO.getUserName())){
+                customerRepo.save(mapper.map(customerDTO, Customer.class));
+                userRepo.save(mapper.map(userDTO, User.class));
+            }else {
+                throw new DuplicateEntryException("User Name Already Exists");
+            }
+
+        }else{
             throw new DuplicateEntryException("Customer Already Exists");
         }
-    }
+
+        }
 
     @Override
     public void deleteCustomer(String id) {
@@ -51,7 +64,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(CustomerDTO customerDTO) {
+    public void updateCustomer(CustomerDTO customerDTO, UserDTO userDTO) {
         if (customerRepo.existsById(customerDTO.getCustomerId())){
             Customer map = mapper.map(customerDTO, Customer.class);
             customerRepo.save(map);
