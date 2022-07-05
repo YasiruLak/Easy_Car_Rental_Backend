@@ -1,4 +1,4 @@
-package lk.easy.rental.entity;
+package lk.easy.rental.dto;
 
 import lk.easy.rental.enums.Role;
 import lombok.AllArgsConstructor;
@@ -6,12 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.*;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 
 /**
  * @author : Yasiru Dahanayaka
  * @name : Car_Rental_Backend
- * @date : 7/3/2022
+ * @date : 7/5/2022
  * @month : 07
  * @year : 2022
  * @since : 0.1.0
@@ -20,13 +21,9 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Data
 @ToString
-@Entity
-public class User {
+public class UserDTO {
 
-    @Id
-    @Column(name = "user_name")
     private String userName;
     private String password;
-    @Enumerated(EnumType.STRING)
     private Role role;
 }

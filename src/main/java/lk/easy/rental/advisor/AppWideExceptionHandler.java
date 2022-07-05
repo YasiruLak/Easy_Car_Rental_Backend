@@ -30,7 +30,7 @@ public class AppWideExceptionHandler {
 
     @ExceptionHandler(NotFoundException.class)
     public ResponseEntity<ResponseUtil> handleNotFondException(Exception e) {
-        return new ResponseEntity<>(new ResponseUtil(500, "Error", e.getMessage()), HttpStatus.NOT_FOUND);
+        return new ResponseEntity<>(new ResponseUtil(404, "Error", e.getMessage()), HttpStatus.NOT_FOUND);
     }
 
     @ExceptionHandler(ValidationException.class)
