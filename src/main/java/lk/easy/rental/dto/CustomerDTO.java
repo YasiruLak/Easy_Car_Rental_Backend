@@ -1,6 +1,7 @@
 package lk.easy.rental.dto;
 
 import lk.easy.rental.embeded.Name;
+import lk.easy.rental.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -30,4 +31,5 @@ public class CustomerDTO {
     private String customerDrivingLicenseNo;
     private String customerEmail;
     private String customerContactNo;
+    private UserDTO user;
 }

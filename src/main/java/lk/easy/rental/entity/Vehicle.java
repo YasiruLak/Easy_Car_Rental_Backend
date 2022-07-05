@@ -50,14 +50,14 @@ public class Vehicle {
     private TransmissionType transmissionType;
     @Column(name = "refundable_damage_fee")
     private double refundableDamagedFee;
-    @Embedded
-    @Column(name = "vehicle_mileage")
-    private Mileage vehicleMileage;
+    @Column(name = "vehicle_service_mileage")
+    private int vehicleServiceMileage;
     @Embedded
     @Column(name = "price_rate")
     private PriceRate vehiclePriceRate;
+    @Embedded
     @Column(name = "free_mileage")
-    private String freeMileage;
+    private Mileage freeMileage;
     @Column(name = "last_service_mileage")
     private String lastServiceMileage;
     @Enumerated(EnumType.STRING)

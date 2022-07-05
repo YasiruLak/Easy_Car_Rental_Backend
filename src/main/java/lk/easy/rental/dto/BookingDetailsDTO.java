@@ -1,14 +1,16 @@
 package lk.easy.rental.dto;
 
-import lk.easy.rental.embeded.Name;
-import lk.easy.rental.entity.User;
+import lk.easy.rental.entity.Booking;
+import lk.easy.rental.entity.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
 import javax.persistence.Column;
-import javax.persistence.Embedded;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -22,13 +24,11 @@ import javax.persistence.Embedded;
 @NoArgsConstructor
 @Data
 @ToString
-public class AdminDTO {
+public class BookingDetailsDTO {
 
-    private String adminId;
-    private String adminNic;
-    private Name adminName;
-    private String adminAddress;
-    private String adminEmail;
-    private String adminContact;
-    private UserDTO user;
+    private String vehicleId;
+    private String bookingId;
+    private VehicleDTO vehicle;
+    private BookingDTO booking;
+
 }

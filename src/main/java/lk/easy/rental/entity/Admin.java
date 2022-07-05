@@ -6,10 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -41,4 +38,6 @@ public class Admin {
     private String adminEmail;
     @Column(name = "contact_no")
     private String adminContact;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 }

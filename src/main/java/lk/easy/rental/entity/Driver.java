@@ -43,6 +43,8 @@ public class Driver {
     @Enumerated(EnumType.STRING)
     @Column(name = "availability")
     private AvailabilityType driverAvailability;
+    @OneToOne(cascade = CascadeType.ALL)
+    private User user;
 
 
 
