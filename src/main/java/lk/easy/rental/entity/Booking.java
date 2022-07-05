@@ -28,12 +28,20 @@ import java.util.List;
 public class Booking {
 
     @Id
+    @Column(name = "booking_id")
     private String bookingId;
+    @Column(name = "pick_up_date")
     private LocalDate pickUpDate;
+    @Column(name = "pick_up_time")
     private LocalTime pickUpTime;
+    @Column(name = "return_date")
     private LocalDate returnDate;
+    @Column(name = "rental_fee")
     private double rentalFee;
+    @Column(name = "damage_fee")
     private double damageFee;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "driver_request_type")
     private RequestType DriverRequestType;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REFRESH})

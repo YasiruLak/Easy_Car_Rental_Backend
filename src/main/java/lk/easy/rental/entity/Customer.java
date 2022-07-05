@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -26,13 +27,20 @@ import javax.persistence.Id;
 public class Customer {
 
     @Id
+    @Column(name = "customer_id")
     private String customerId;
+    @Column(name = "nic_no")
     private String customerNIC;
     @Embedded
+    @Column(name = "name")
     private Name customerName;
+    @Column(name = "address")
     private String customerAddress;
+    @Column(name = "driving_license_no")
     private String customerDrivingLicenseNo;
+    @Column(name = "email")
     private String customerEmail;
+    @Column(name = "contact_No")
     private String customerContactNo;
 
     

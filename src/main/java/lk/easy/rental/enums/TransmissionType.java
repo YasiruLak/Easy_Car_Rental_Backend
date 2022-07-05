@@ -1,5 +1,7 @@
 package lk.easy.rental.enums;
 
+import lombok.ToString;
+
 /**
  * @author : Yasiru Dahanayaka
  * @name : Car_Rental_Backend
@@ -8,6 +10,7 @@ package lk.easy.rental.enums;
  * @year : 2022
  * @since : 0.1.0
  **/
+@ToString
 public enum TransmissionType {
 
     MANUAL,

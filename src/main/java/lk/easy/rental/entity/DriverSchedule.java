@@ -24,8 +24,10 @@ import javax.persistence.*;
 public class DriverSchedule {
 
     @Id
+    @Column(name = "driver_id")
     private String driverId;
     @Id
+    @Column(name = "booking_id")
     private String bookingId;
 
     @ManyToOne

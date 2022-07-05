@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -27,11 +28,17 @@ import javax.persistence.Id;
 public class Admin {
 
     @Id
+    @Column(name = "admin_id")
     private String adminId;
+    @Column(name = "nic_no")
     private String adminNic;
     @Embedded
-    private Name name;
-    private String address;
-    private String email;
-    private String contact;
+    @Column(name = "full_name")
+    private Name adminName;
+    @Column(name = "address")
+    private String adminAddress;
+    @Column(name = "email")
+    private String adminEmail;
+    @Column(name = "contact_no")
+    private String adminContact;
 }

@@ -15,5 +15,4 @@ public enum AvailabilityType {
 
     AVAILABLE, NOT_AVAILABLE
 
-
 }

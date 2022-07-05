@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
@@ -25,7 +26,7 @@ import javax.persistence.Id;
 public class User {
 
     @Id
-    private String userID;
+    @Column(name = "user_name")
     private String userName;
     private String password;
     private Role role;

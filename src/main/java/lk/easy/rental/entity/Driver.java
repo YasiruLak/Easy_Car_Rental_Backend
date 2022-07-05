@@ -27,14 +27,21 @@ import java.util.List;
 public class Driver {
 
     @Id
+    @Column(name = "driver_id")
     private String driverId;
-    private String driverNIC;
+    @Column(name = "user_name")
+    private String nic_no;
+    @Column(name = "license_no")
     private String driverLicenseNo;
     @Embedded
+    @Column(name = "name")
     private Name driverName;
+    @Column(name = "address")
     private String driverAddress;
+    @Column(name = "contact_no")
     private String driverContactNo;
     @Enumerated(EnumType.STRING)
+    @Column(name = "availability")
     private AvailabilityType driverAvailability;
 
 

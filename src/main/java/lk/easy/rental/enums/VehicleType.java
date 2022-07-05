@@ -1,5 +1,7 @@
 package lk.easy.rental.enums;
 
+import lombok.ToString;
+
 import javax.persistence.Embeddable;
 
 /**
@@ -10,7 +12,7 @@ import javax.persistence.Embeddable;
  * @year : 2022
  * @since : 0.1.0
  **/
-
+@ToString
 public enum VehicleType {
 
     GENERAL,

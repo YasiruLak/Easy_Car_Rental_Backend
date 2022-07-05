@@ -11,9 +11,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -31,18 +29,37 @@ import javax.persistence.Id;
 public class Vehicle {
 
     @Id
+    @Column(name = "id")
     private String vehicleId;
+    @Column(name = "registration_no")
     private String registrationNo;
+    @Column(name = "brand")
     private String vehicleBrand;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "vehicle_type")
     private VehicleType vehicleType;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "fuel_type")
     private FuelType fuelType;
+    @Column(name = "no_of_passenger")
     private int numberOfPassenger;
+    @Column(name = "colour")
     private String vehicleColour;
+    @Column(name = "transmission_type")
     private TransmissionType transmissionType;
+    @Column(name = "refundable_damage_fee")
     private double refundableDamagedFee;
     @Embedded
+    @Column(name = "vehicle_mileage")
     private Mileage vehicleMileage;
     @Embedded
+    @Column(name = "price_rate")
     private PriceRate vehiclePriceRate;
+    @Column(name = "free_mileage")
+    private String freeMileage;
+    @Column(name = "last_service_mileage")
+    private String lastServiceMileage;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "availability")
     private AvailabilityType vehicleAvailability;
 }

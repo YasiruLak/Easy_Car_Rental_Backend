@@ -23,8 +23,10 @@ import javax.persistence.*;
 @IdClass(BookingDetails_PK.class)
 public class BookingDetails {
     @Id
+    @Column(name = "vehicle_id")
     private String vehicleId;
     @Id
+    @Column(name = "booking_id")
     private String bookingId;
 
     @ManyToOne
