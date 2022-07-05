@@ -30,7 +30,7 @@ public class Driver {
     @Column(name = "driver_id")
     private String driverId;
     @Column(name = "user_name")
-    private String nic_no;
+    private String driverNIC;
     @Column(name = "license_no")
     private String driverLicenseNo;
     @Embedded
