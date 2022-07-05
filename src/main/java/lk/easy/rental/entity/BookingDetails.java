@@ -30,10 +30,10 @@ public class BookingDetails {
     private String bookingId;
 
     @ManyToOne
-    @JoinColumn(name = "vehicleId",referencedColumnName = "vehicleId",insertable = false, updatable = false)
+    @JoinColumn(name = "vehicleId",referencedColumnName = "id",insertable = false, updatable = false)
     private Vehicle vehicle;
 
     @ManyToOne
-    @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false, updatable = false)
+    @JoinColumn(name = "bookingId",referencedColumnName = "booking_id",insertable = false, updatable = false)
     private Booking booking;
 }

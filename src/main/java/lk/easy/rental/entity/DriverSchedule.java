@@ -31,11 +31,11 @@ public class DriverSchedule {
     private String bookingId;
 
     @ManyToOne
-    @JoinColumn(name = "driverId",referencedColumnName = "driverId",insertable = false,updatable = false)
+    @JoinColumn(name = "driverId",referencedColumnName = "driver_id",insertable = false,updatable = false)
     private Driver driver;
 
     @ManyToOne
-    @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
+    @JoinColumn(name = "bookingId",referencedColumnName = "booking_id",insertable = false,updatable = false)
     private Booking booking;
 
 }
