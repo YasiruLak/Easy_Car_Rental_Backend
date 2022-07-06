@@ -1,16 +1,10 @@
 package lk.easy.rental.dto;
 
-import lk.easy.rental.entity.Booking;
-import lk.easy.rental.entity.Vehicle;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 
 /**
  * @author : Yasiru Dahanayaka

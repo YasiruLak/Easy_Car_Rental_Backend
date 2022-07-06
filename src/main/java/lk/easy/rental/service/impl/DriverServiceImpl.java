@@ -1,11 +1,7 @@
 package lk.easy.rental.service.impl;
 
-import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.DriverDTO;
-import lk.easy.rental.dto.UserDTO;
-import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Driver;
-import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.DriverRepo;

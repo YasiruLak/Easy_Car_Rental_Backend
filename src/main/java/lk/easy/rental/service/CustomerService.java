@@ -1,7 +1,6 @@
 package lk.easy.rental.service;
 
 import lk.easy.rental.dto.CustomerDTO;
-import lk.easy.rental.dto.UserDTO;
 
 import java.util.List;
 

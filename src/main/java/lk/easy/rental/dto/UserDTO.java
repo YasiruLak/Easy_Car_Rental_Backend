@@ -6,8 +6,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.EnumType;
-import javax.persistence.Enumerated;
 
 /**
  * @author : Yasiru Dahanayaka

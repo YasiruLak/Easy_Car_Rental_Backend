@@ -1,15 +1,12 @@
 package lk.easy.rental.dto;
 
 import lk.easy.rental.embeded.Name;
-import lk.easy.rental.entity.User;
 import lk.easy.rental.enums.AvailabilityType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
-import javax.persistence.Embedded;
-import javax.persistence.Id;
 
 /**
  * @author : Yasiru Dahanayaka

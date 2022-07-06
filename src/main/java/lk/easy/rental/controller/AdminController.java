@@ -1,8 +1,6 @@
 package lk.easy.rental.controller;
 
 import lk.easy.rental.dto.AdminDTO;
-import lk.easy.rental.dto.DriverDTO;
-import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.service.AdminService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;

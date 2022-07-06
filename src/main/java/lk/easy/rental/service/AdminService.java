@@ -1,8 +1,7 @@
 package lk.easy.rental.service;
 
 import lk.easy.rental.dto.AdminDTO;
-import lk.easy.rental.dto.DriverDTO;
-import lk.easy.rental.dto.UserDTO;
+
 
 import java.util.List;
 

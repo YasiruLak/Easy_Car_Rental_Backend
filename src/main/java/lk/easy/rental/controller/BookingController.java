@@ -1,7 +1,6 @@
 package lk.easy.rental.controller;
 
 import lk.easy.rental.dto.BookingDTO;
-import lk.easy.rental.dto.DriverDTO;
 import lk.easy.rental.service.BookingService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
