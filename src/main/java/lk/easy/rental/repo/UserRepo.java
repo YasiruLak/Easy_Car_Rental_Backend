@@ -12,4 +12,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since : 0.1.0
  **/
 public interface UserRepo extends JpaRepository<User,String> {
+
+    boolean existsByUserName(String name);
 }

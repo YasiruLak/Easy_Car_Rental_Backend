@@ -39,11 +39,10 @@ public class CustomerServiceImpl implements CustomerService {
     UserRepo userRepo;
 
     @Override
-    public void saveCustomer(CustomerDTO customerDTO, UserDTO userDTO) {
+    public void saveCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getCustomerId())){
-            if (!userRepo.existsById(userDTO.getUserName())){
+            if (!userRepo.existsByUserName(customerDTO.getUser().getUserName())) {
                 customerRepo.save(mapper.map(customerDTO, Customer.class));
-                userRepo.save(mapper.map(userDTO, User.class));
             }else {
                 throw new DuplicateEntryException("User Name Already Exists");
             }
@@ -64,7 +63,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public void updateCustomer(CustomerDTO customerDTO, UserDTO userDTO) {
+    public void updateCustomer(CustomerDTO customerDTO) {
         if (customerRepo.existsById(customerDTO.getCustomerId())){
             Customer map = mapper.map(customerDTO, Customer.class);
             customerRepo.save(map);

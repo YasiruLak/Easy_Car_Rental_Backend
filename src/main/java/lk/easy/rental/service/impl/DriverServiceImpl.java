@@ -41,11 +41,10 @@ public class DriverServiceImpl implements DriverService {
     UserRepo userRepo;
 
     @Override
-    public void saveDriver(DriverDTO driverDTO, UserDTO userDTO) {
+    public void saveDriver(DriverDTO driverDTO) {
         if (!driverRepo.existsById(driverDTO.getDriverId())) {
-            if (!userRepo.existsById(userDTO.getUserName())) {
+            if (!userRepo.existsByUserName(driverDTO.getUser().getUserName())) {
                 driverRepo.save(mapper.map(driverDTO, Driver.class));
-                userRepo.save(mapper.map(userDTO, User.class));
             } else {
                 throw new DuplicateEntryException("User Name Already Exists");
             }
@@ -64,7 +63,7 @@ public class DriverServiceImpl implements DriverService {
     }
 
     @Override
-    public void updateDriver(DriverDTO driverDTO, UserDTO userDTO) {
+    public void updateDriver(DriverDTO driverDTO) {
         if (driverRepo.existsById(driverDTO.getDriverId())){
             Driver map = mapper.map(driverDTO, Driver.class);
             driverRepo.save(map);

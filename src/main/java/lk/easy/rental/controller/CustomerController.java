@@ -27,8 +27,8 @@ public class CustomerController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO, UserDTO userDTO){
-        customerService.saveCustomer(customerDTO, userDTO);
+    public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO){
+        customerService.saveCustomer(customerDTO);
         System.out.println(customerDTO.toString());
         return new ResponseUtil(200,"Saved",null);
     }
@@ -39,8 +39,8 @@ public class CustomerController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO, UserDTO userDTO){
-        customerService.updateCustomer(customerDTO, userDTO);
+    public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
+        customerService.updateCustomer(customerDTO);
         System.out.println(customerDTO.toString());
         return new ResponseUtil(200,"Updated",null);
     }

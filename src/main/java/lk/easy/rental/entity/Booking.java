@@ -1,5 +1,6 @@
 package lk.easy.rental.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.easy.rental.enums.RequestType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -31,10 +32,13 @@ public class Booking {
     @Column(name = "booking_id")
     private String bookingId;
     @Column(name = "pick_up_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate pickUpDate;
     @Column(name = "pick_up_time")
+    @JsonFormat(pattern="HH:mm:ss")
     private LocalTime pickUpTime;
     @Column(name = "return_date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate returnDate;
     @Enumerated(EnumType.STRING)
     @Column(name = "driver_request_type")

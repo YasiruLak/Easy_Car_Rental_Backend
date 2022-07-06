@@ -16,9 +16,9 @@ import java.util.List;
  **/
 public interface AdminService {
 
-    void saveAdmin(AdminDTO adminDTO, UserDTO userDTO);
+    void saveAdmin(AdminDTO adminDTO);
     void deleteAdmin(String id);
-    void updateAdmin(AdminDTO adminDTO, UserDTO userDTO);
+    void updateAdmin(AdminDTO adminDTO);
     AdminDTO searchAdmin(String id);
     List<AdminDTO> getAllAdmin();
 }

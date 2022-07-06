@@ -28,8 +28,8 @@ public class AdminController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveAdmin(@RequestBody AdminDTO adminDTO, UserDTO userDTO){
-        adminService.saveAdmin(adminDTO,userDTO);
+    public ResponseUtil saveAdmin(@RequestBody AdminDTO adminDTO){
+        adminService.saveAdmin(adminDTO);
         return new ResponseUtil(200,"Saved",null);
     }
 
@@ -39,8 +39,8 @@ public class AdminController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateAdmin(@RequestBody AdminDTO adminDTO, UserDTO userDTO){
-        adminService.updateAdmin(adminDTO, userDTO);
+    public ResponseUtil updateAdmin(@RequestBody AdminDTO adminDTO){
+        adminService.updateAdmin(adminDTO);
         return new ResponseUtil(200,"Updated",null);
     }
 

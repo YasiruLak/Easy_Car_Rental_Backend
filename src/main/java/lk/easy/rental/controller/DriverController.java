@@ -28,8 +28,8 @@ public class DriverController {
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil saveDriver(@RequestBody DriverDTO driverDTO, UserDTO userDTO){
-        driverService.saveDriver(driverDTO, userDTO);
+    public ResponseUtil saveDriver(@RequestBody DriverDTO driverDTO){
+        driverService.saveDriver(driverDTO);
         return new ResponseUtil(200,"Saved",null);
     }
 
@@ -39,8 +39,8 @@ public class DriverController {
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateDriver(@RequestBody DriverDTO driverDTO, UserDTO userDTO){
-        driverService.updateDriver(driverDTO,userDTO);
+    public ResponseUtil updateDriver(@RequestBody DriverDTO driverDTO){
+        driverService.updateDriver(driverDTO);
         return new ResponseUtil(200,"Updated",null);
     }
 

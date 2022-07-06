@@ -41,11 +41,10 @@ public class AdminServiceImpl implements AdminService {
     UserRepo userRepo;
 
     @Override
-    public void saveAdmin(AdminDTO adminDTO, UserDTO userDTO) {
+    public void saveAdmin(AdminDTO adminDTO) {
         if (!adminRepo.existsById(adminDTO.getAdminId())){
-            if (!userRepo.existsById(userDTO.getUserName())) {
+            if (!userRepo.existsByUserName(adminDTO.getUser().getUserName())) {
             adminRepo.save(mapper.map(adminDTO, Admin.class));
-                userRepo.save(mapper.map(userDTO, User.class));
         }else {
             throw new DuplicateEntryException("User Name Already Exists");
         }
@@ -64,7 +63,7 @@ public class AdminServiceImpl implements AdminService {
     }
 
     @Override
-    public void updateAdmin(AdminDTO adminDTO, UserDTO userDTO) {
+    public void updateAdmin(AdminDTO adminDTO) {
         if (adminRepo.existsById(adminDTO.getAdminId())){
             Admin map = mapper.map(adminDTO, Admin.class);
             adminRepo.save(map);

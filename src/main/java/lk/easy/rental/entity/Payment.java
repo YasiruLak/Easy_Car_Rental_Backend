@@ -1,5 +1,6 @@
 package lk.easy.rental.entity;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.easy.rental.enums.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -28,6 +29,7 @@ public class Payment {
     @Column(name = "payment_id")
     private String paymentId;
     @Column(name = "date")
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate paymentDate;
     @Column(name = "invoice_no")
     private String invoiceNo;

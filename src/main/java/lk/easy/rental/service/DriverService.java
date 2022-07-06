@@ -16,9 +16,9 @@ import java.util.List;
  **/
 public interface DriverService {
 
-    void saveDriver(DriverDTO driverDTO, UserDTO userDTO);
+    void saveDriver(DriverDTO driverDTO);
     void deleteDriver(String id);
-    void updateDriver(DriverDTO driverDTO, UserDTO userDTO);
+    void updateDriver(DriverDTO driverDTO);
     DriverDTO searchDriver(String id);
     List<DriverDTO> getAllDriver();
 }
