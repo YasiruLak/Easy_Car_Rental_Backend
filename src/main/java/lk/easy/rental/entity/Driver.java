@@ -26,7 +26,6 @@ import javax.persistence.*;
 public class Driver {
 
     @Id
-    @Column(name = "driver_id")
     private String driverId;
     @Column(name = "user_name")
     private String driverNIC;

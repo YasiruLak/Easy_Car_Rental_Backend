@@ -1,5 +1,6 @@
 package lk.easy.rental.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.easy.rental.enums.RequestType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,8 +26,11 @@ import java.util.List;
 public class BookingDTO {
 
     private String bookingId;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate pickUpDate;
+    @JsonFormat(pattern="HH:mm:ss")
     private LocalTime pickUpTime;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate returnDate;
     private RequestType DriverRequestType;
     private CustomerDTO customer;

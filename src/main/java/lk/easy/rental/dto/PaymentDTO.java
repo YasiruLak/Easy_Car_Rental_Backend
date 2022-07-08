@@ -1,5 +1,6 @@
 package lk.easy.rental.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.easy.rental.enums.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -23,6 +24,7 @@ import java.time.LocalDate;
 public class PaymentDTO {
 
     private String paymentId;
+    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate paymentDate;
     private String invoiceNo;
     private double amount;

@@ -29,7 +29,6 @@ import javax.persistence.*;
 public class Vehicle {
 
     @Id
-    @Column(name = "id")
     private String vehicleId;
     @Column(name = "registration_no")
     private String registrationNo;
@@ -51,7 +50,7 @@ public class Vehicle {
     @Column(name = "refundable_damage_fee")
     private double refundableDamagedFee;
     @Column(name = "vehicle_service_mileage")
-    private int vehicleServiceMileage;
+    private int vehicleMileage;
     @Embedded
     @Column(name = "price_rate")
     private PriceRate vehiclePriceRate;
@@ -59,7 +58,7 @@ public class Vehicle {
     @Column(name = "free_mileage")
     private Mileage freeMileage;
     @Column(name = "last_service_mileage")
-    private String lastServiceMileage;
+    private int lastServiceMileage;
     @Enumerated(EnumType.STRING)
     @Column(name = "availability")
     private AvailabilityType vehicleAvailability;

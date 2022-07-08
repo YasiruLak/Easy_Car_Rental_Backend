@@ -24,7 +24,6 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    @Column(name = "customer_id")
     private String customerId;
     @Column(name = "nic_no")
     private String customerNIC;

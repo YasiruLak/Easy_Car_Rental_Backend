@@ -29,26 +29,22 @@ import java.util.List;
 public class Booking {
 
     @Id
-    @Column(name = "booking_id")
     private String bookingId;
     @Column(name = "pick_up_date")
-    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate pickUpDate;
     @Column(name = "pick_up_time")
-    @JsonFormat(pattern="HH:mm:ss")
     private LocalTime pickUpTime;
     @Column(name = "return_date")
-    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate returnDate;
     @Enumerated(EnumType.STRING)
     @Column(name = "driver_request_type")
-    private RequestType DriverRequestType;
+    private RequestType driverRequestType;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "custId",referencedColumnName = "customer_id",nullable = false)
+    @JoinColumn(name = "custId",referencedColumnName = "customerId",nullable = false)
     private Customer customer;
 
-    @OneToMany(mappedBy = "booking")
+    @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)
     private List<BookingDetails> bookingDetails;
 
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)

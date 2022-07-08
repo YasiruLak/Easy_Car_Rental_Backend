@@ -35,9 +35,9 @@ public class VehicleDTO {
     private String vehicleColour;
     private TransmissionType transmissionType;
     private double refundableDamagedFee;
-    private Mileage vehicleMileage;
+    private int vehicleMileage;
     private PriceRate vehiclePriceRate;
-    private String freeMileage;
-    private String lastServiceMileage;
+    private Mileage freeMileage;
+    private int lastServiceMileage;
     private AvailabilityType vehicleAvailability;
 }

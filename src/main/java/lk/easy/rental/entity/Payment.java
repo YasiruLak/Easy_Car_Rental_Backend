@@ -29,7 +29,6 @@ public class Payment {
     @Column(name = "payment_id")
     private String paymentId;
     @Column(name = "date")
-    @JsonFormat(pattern="yyyy-MM-dd")
     private LocalDate paymentDate;
     @Column(name = "invoice_no")
     private String invoiceNo;
@@ -40,7 +39,7 @@ public class Payment {
     private PaymentType paymentType;
 
     @ManyToOne
-    @JoinColumn(name = "bookingId",referencedColumnName = "booking_id",insertable = false,updatable = false)
+    @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
     private Booking booking;
 
 }
