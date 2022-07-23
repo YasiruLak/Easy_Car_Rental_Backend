@@ -1,5 +1,6 @@
 package lk.easy.rental.service.impl;
 
+import lk.easy.rental.config.PasswordConfig;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.exception.DuplicateEntryException;
@@ -36,11 +37,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Autowired
     UserRepo userRepo;
 
+    @Autowired
+    private PasswordConfig passwordConfig;
+
     @Override
     public void saveCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getCustomerId())){
             if (!userRepo.existsByUserName(customerDTO.getUser().getUserName())) {
-                customerRepo.save(mapper.map(customerDTO, Customer.class));
+                Customer customer = mapper.map(customerDTO, Customer.class);
+                customer.getUser().setPassword(passwordConfig.passwordEncoder().encode(customerDTO.getUser().getPassword()));
+                customerRepo.save(customer);
             }else {
                 throw new DuplicateEntryException("User Name Already Exists");
             }

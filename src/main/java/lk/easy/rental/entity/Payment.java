@@ -1,6 +1,5 @@
 package lk.easy.rental.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lk.easy.rental.enums.PaymentType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -38,7 +37,7 @@ public class Payment {
     @Column(name = "payment_type")
     private PaymentType paymentType;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REFRESH})
     @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false,updatable = false)
     private Booking booking;
 

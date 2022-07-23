@@ -21,6 +21,7 @@ import lombok.ToString;
 @ToString
 public class UserDTO {
 
+    private String token;
     private int userId;
     private String userName;
     private String password;
@@ -30,5 +31,11 @@ public class UserDTO {
         this.userName = userName;
         this.password = password;
         this.role = role;
+    }
+
+    public UserDTO(String token, int userId, String userName) {
+        this.token = token;
+        this.userId = userId;
+        this.userName = userName;
     }
 }

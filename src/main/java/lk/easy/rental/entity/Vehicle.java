@@ -1,5 +1,6 @@
 package lk.easy.rental.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.easy.rental.embeded.Mileage;
 import lk.easy.rental.embeded.PriceRate;
 import lk.easy.rental.enums.AvailabilityType;
@@ -26,6 +27,7 @@ import javax.persistence.*;
 @Data
 @ToString
 @Entity
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class Vehicle {
 
     @Id

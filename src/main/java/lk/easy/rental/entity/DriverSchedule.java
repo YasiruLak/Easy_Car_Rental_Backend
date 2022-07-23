@@ -1,5 +1,6 @@
 package lk.easy.rental.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -21,6 +22,8 @@ import javax.persistence.*;
 @Entity
 @ToString
 @IdClass(DriverSchedule_PK.class)
+
+//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DriverSchedule {
 
     @Id
