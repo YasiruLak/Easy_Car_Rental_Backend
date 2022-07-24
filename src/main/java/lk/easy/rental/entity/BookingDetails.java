@@ -21,7 +21,7 @@ import javax.persistence.*;
 @Entity
 @ToString
 @IdClass(BookingDetails_PK.class)
-public class BookingDetails {
+public class  BookingDetails {
     @Id
     private String vehicleId;
     @Id
