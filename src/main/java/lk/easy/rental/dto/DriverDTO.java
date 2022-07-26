@@ -22,12 +22,14 @@ import lombok.ToString;
 @ToString
 public class DriverDTO {
 
-    private String driverId;
-    private String driverNIC;
-    private String driverLicenseNo;
-    private Name driverName;
-    private String driverAddress;
-    private String driverContactNo;
-    private AvailabilityType driverAvailability;
+    private String id;
+    private String nic;
+    private Name name;
+    private String address;
+    private String drivingLicenseNo;
+    private String email;
+    private String contactNo;
     private UserDTO user;
+    private AvailabilityType driverAvailability;
+
 }

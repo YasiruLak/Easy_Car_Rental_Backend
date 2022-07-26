@@ -41,7 +41,7 @@ public class Booking {
     private RequestType driverRequestType;
 
     @ManyToOne(cascade = {CascadeType.DETACH,CascadeType.REFRESH})
-    @JoinColumn(name = "custId",referencedColumnName = "customerId",nullable = false)
+    @JoinColumn(name = "custId",referencedColumnName = "id",nullable = false)
     private Customer customer;
 
     @OneToMany(mappedBy = "booking",cascade = CascadeType.ALL)

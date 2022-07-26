@@ -24,20 +24,20 @@ import javax.persistence.*;
 public class Customer {
 
     @Id
-    private String customerId;
+    private String id;
     @Column(name = "nic_no")
-    private String customerNIC;
+    private String nic;
     @Embedded
     @Column(name = "name")
-    private Name customerName;
+    private Name name;
     @Column(name = "address")
-    private String customerAddress;
+    private String address;
     @Column(name = "driving_license_no")
-    private String customerDrivingLicenseNo;
+    private String drivingLicenseNo;
     @Column(name = "email")
-    private String customerEmail;
+    private String email;
     @Column(name = "contact_No")
-    private String customerContactNo;
+    private String contactNo;
     @OneToOne(cascade = CascadeType.ALL)
     private User user;
 

@@ -38,7 +38,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void saveDriver(DriverDTO driverDTO) {
-        if (!driverRepo.existsById(driverDTO.getDriverId())) {
+        if (!driverRepo.existsById(driverDTO.getId())) {
             if (!userRepo.existsByUserName(driverDTO.getUser().getUserName())) {
                 driverRepo.save(mapper.map(driverDTO, Driver.class));
             } else {
@@ -60,7 +60,7 @@ public class DriverServiceImpl implements DriverService {
 
     @Override
     public void updateDriver(DriverDTO driverDTO) {
-        if (driverRepo.existsById(driverDTO.getDriverId())){
+        if (driverRepo.existsById(driverDTO.getId())){
             Driver map = mapper.map(driverDTO, Driver.class);
             driverRepo.save(map);
         }else {

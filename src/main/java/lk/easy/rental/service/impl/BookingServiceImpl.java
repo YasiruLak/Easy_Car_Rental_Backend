@@ -47,7 +47,7 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
         if (!bookingRepo.existsById(bookingDTO.getBookingId())) {
-            if (!customerRepo.existsById(bookingDTO.getCustomer().getCustomerId())) {
+            if (!customerRepo.existsById(bookingDTO.getCustomer().getId())) {
                 if (!bookingDTO.getBookingDetails().isEmpty()) {
                     if (!bookingDTO.getDriverRequestType().equals("YES")) {
                         if (!bookingDTO.getDriverSchedules().isEmpty()){

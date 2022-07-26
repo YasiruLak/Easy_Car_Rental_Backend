@@ -48,9 +48,9 @@ public class VehicleController {
         return new ResponseUtil(200,"Loaded", vehicleDTO);
     }
 
-    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteVehicle(@RequestParam String id){
-        vehicleService.deleteVehicle(id);
+    @DeleteMapping(params = {"vehicleId"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteVehicle(@RequestParam String vehicleId){
+        vehicleService.deleteVehicle(vehicleId);
         return new ResponseUtil(200,"Deleted",null);
     }
 }
