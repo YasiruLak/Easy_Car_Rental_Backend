@@ -27,11 +27,11 @@ public class  BookingDetails {
     @Id
     private String bookingId;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "vehicleId",referencedColumnName = "vehicleId",insertable = false, updatable = false)
     private Vehicle vehicle;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "bookingId",referencedColumnName = "bookingId",insertable = false, updatable = false)
     private Booking booking;
 }

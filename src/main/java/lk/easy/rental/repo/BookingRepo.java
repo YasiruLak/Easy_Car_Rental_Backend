@@ -1,7 +1,12 @@
 package lk.easy.rental.repo;
 
 import lk.easy.rental.entity.Booking;
+import lk.easy.rental.entity.BookingDetails;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.sql.Date;
+import java.time.LocalDate;
+import java.util.List;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -12,4 +17,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since : 0.1.0
  **/
 public interface BookingRepo extends JpaRepository<Booking,String> {
+
+    List<Booking> findAllByPickUpDateAndReturnDate(LocalDate pickUpDate, LocalDate returnDate );
+
+
 }

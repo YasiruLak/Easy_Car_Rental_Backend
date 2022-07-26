@@ -1,7 +1,11 @@
 package lk.easy.rental.repo;
 
+import lk.easy.rental.embeded.PriceRate;
 import lk.easy.rental.entity.Vehicle;
+import lk.easy.rental.enums.FuelType;
 import org.springframework.data.jpa.repository.JpaRepository;
+
+import java.util.List;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -12,4 +16,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since : 0.1.0
  **/
 public interface VehicleRepo extends JpaRepository<Vehicle,String> {
+
+    List<Vehicle>findAllByNumberOfPassenger(int noOfPassenger);
+
+    List<Vehicle>findAllByFuelType(FuelType fuelType);
+
+    List<Vehicle>findAllByVehiclePriceRate(PriceRate priceRate);
 }

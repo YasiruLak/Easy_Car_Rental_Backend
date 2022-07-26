@@ -48,7 +48,7 @@ public class FileServiceImpl implements FileService {
                 throw new DuplicateEntryException("File Already Exists");
         }
         String dirName = "F://Project/Web-Second Sem/Spring Projects/Easy Car Rental System/uploads/";
-        String fileName = UUID.randomUUID().toString() + "." + StringUtils.getFilenameExtension(fileDTO.getUploadFile().getOriginalFilename());
+        String fileName = UUID.randomUUID() + "." + StringUtils.getFilenameExtension(fileDTO.getUploadFile().getOriginalFilename());
         File uploadsDir = new File( dirName);
         if (!uploadsDir.exists())
             uploadsDir.mkdir();
