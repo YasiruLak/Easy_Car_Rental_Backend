@@ -33,7 +33,7 @@ public class BookingController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllBooking(){
-        return new ResponseUtil(200,"OK",bookingService.getAllBooking());
+        return new ResponseUtil(201,"OK",bookingService.getAllBooking());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)

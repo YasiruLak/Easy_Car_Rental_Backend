@@ -28,29 +28,29 @@ public class VehicleController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.saveVehicle(vehicleDTO);
-        return new ResponseUtil(200,"Saved",null);
+        return new ResponseUtil(201,"Saved",null);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllVehicle(){
-        return new ResponseUtil(200,"OK",vehicleService.getAllVehicle());
+        return new ResponseUtil(201,"OK",vehicleService.getAllVehicle());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.updateVehicle(vehicleDTO);
-        return new ResponseUtil(200,"Updated",null);
+        return new ResponseUtil(201,"Updated",null);
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchVehicle(@PathVariable String id){
         VehicleDTO vehicleDTO = vehicleService.searchVehicle(id);
-        return new ResponseUtil(200,"Loaded", vehicleDTO);
+        return new ResponseUtil(201,"Loaded", vehicleDTO);
     }
 
     @DeleteMapping(params = {"vehicleId"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteVehicle(@RequestParam String vehicleId){
         vehicleService.deleteVehicle(vehicleId);
-        return new ResponseUtil(200,"Deleted",null);
+        return new ResponseUtil(201,"Deleted",null);
     }
 }

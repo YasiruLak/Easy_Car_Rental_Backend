@@ -47,28 +47,33 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
         if (!bookingRepo.existsById(bookingDTO.getBookingId())) {
-            if (!customerRepo.existsById(bookingDTO.getCustomer().getId())) {
-                if (!bookingDTO.getBookingDetails().isEmpty()) {
-                    if (!bookingDTO.getDriverRequestType().equals("YES")) {
-                        if (!bookingDTO.getDriverSchedules().isEmpty()){
-                            bookingRepo.save(mapper.map(bookingDTO, Booking.class));
+            if(customerRepo.existsById(bookingDTO.getCustomer().getId())){
+                if (!bookingDTO.getBookingDetails().isEmpty()){
+                    if (isVehicleAvailable(bookingDTO)){
+                        if (bookingDTO.getDriverRequestType().equals("YES")){
+                            //Driver is needed
+                            System.out.println("Entity: "+mapper.map(bookingDTO, Booking.class).toString());
+                            if (!bookingDTO.getDriverSchedules().isEmpty()) bookingRepo.save(mapper.map(bookingDTO, Booking.class));
+                        }else {
+                            //No driver Is needed
+                            if (bookingDTO.getDriverSchedules().isEmpty()) bookingRepo.save(mapper.map(bookingDTO, Booking.class));
                         }
-                        //-----------------------------------------------------
-                        //------------if driver isn't request------------------
-                    }else {
-                        if (bookingDTO.getDriverSchedules().isEmpty()){
-                            bookingRepo.save(mapper.map(bookingDTO, Booking.class));
-                        }
+                    }else{
+                        throw new RuntimeException("Bookings Already available.");
                     }
-                    //-----------------------------------------------------
+
+
+
                 }else {
-                    throw new DuplicateEntryException("No vehicle added for the booking");
+                    throw new RuntimeException("No vehicles added for the booking..!");
                 }
+
             }else {
-                throw new DuplicateEntryException("No such a customer..!");
+                throw new NotFoundException("Customer Not Found..!");
             }
+
         }else {
-            throw new DuplicateEntryException("Booking already exist");
+            throw new DuplicateEntryException("Booking already exists with this Id");
         }
     }
 

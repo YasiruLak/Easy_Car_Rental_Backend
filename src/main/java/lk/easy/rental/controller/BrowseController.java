@@ -5,7 +5,6 @@ import lk.easy.rental.enums.FuelType;
 import lk.easy.rental.service.BrowseService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 /**
@@ -26,16 +25,16 @@ public class BrowseController {
 
     @GetMapping(params = {"noOfPassenger"})
     public ResponseUtil sortVehicleNoOfPassenger(@RequestParam int noOfPassenger){
-        return new ResponseUtil(200,"OK",browseService.getAllNoOfPassenger(noOfPassenger));
+        return new ResponseUtil(201,"OK",browseService.getAllNoOfPassenger(noOfPassenger));
     }
 
     @GetMapping(params = {"fuelType"})
     public ResponseUtil sortVehicleFuelType(@RequestParam FuelType fuelType){
-        return new ResponseUtil(200,"OK",browseService.getAllFuelType(fuelType));
+        return new ResponseUtil(201,"OK",browseService.getAllFuelType(fuelType));
     }
 
     @GetMapping(params = {"priceRate"})
     public ResponseUtil sortVehiclePriceRate(@RequestParam PriceRate priceRate){
-        return new ResponseUtil(200,"OK",browseService.getPriceRate(priceRate));
+        return new ResponseUtil(201,"OK",browseService.getPriceRate(priceRate));
     }
 }

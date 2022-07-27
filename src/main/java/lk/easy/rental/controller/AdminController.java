@@ -33,7 +33,7 @@ public class AdminController {
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllAdmin(){
-        return new ResponseUtil(200,"OK",adminService.getAllAdmin());
+        return new ResponseUtil(201,"OK",adminService.getAllAdmin());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
