@@ -98,7 +98,7 @@ public class BrowseServiceImpl implements BrowseService {
 
         System.out.println("Available"+ availableVehicles.toString());
         System.out.println("Not Available"+ notAvailableVehicles.toString());
-        System.out.println("Not Available Book"+ notAvailableBookingList.toString());
+//        System.out.println("Not Available Book"+ notAvailableBookingList.toString());
 
         return availableVehicles;
 
