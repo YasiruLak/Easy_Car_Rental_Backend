@@ -13,13 +13,15 @@ import java.util.Optional;
  * @year : 2022
  * @since : 0.1.0
  **/
-public interface UserRepo extends JpaRepository<User,String> {
+public interface UserRepo extends JpaRepository<User,Integer> {
 
     User findByUserName(String username);
 
     boolean existsByUserName(String name);
 
     Optional<User> findByUserId(int userId);
+
+    User findByUserNameAndPassword(String userName, String password);
 
 
 }

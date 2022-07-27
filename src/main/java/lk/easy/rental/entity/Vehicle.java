@@ -61,6 +61,7 @@ public class Vehicle {
     private Mileage freeMileage;
     @Column(name = "last_service_mileage")
     private int lastServiceMileage;
+    private double extraKmPer;
     @Enumerated(EnumType.STRING)
     @Column(name = "availability")
     private AvailabilityType vehicleAvailability;

@@ -1,9 +1,11 @@
 package lk.easy.rental.controller;
 
 import lk.easy.rental.dto.CustomerDTO;
+import lk.easy.rental.dto.DriverDTO;
 import lk.easy.rental.dto.UserDTO;
 import lk.easy.rental.jwt.AuthenticationRequest;
 import lk.easy.rental.service.CustomerService;
+import lk.easy.rental.service.LoginService;
 import lk.easy.rental.service.UserService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,10 +32,19 @@ public class LoginController {
     @Autowired
     UserService userService;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> saveCustomer(@RequestBody AuthenticationRequest authenticationRequest, Principal principal){
-        ResponseEntity<?> responseEntity = userService.logInUser(authenticationRequest);
-        return responseEntity;
+    @Autowired
+    LoginService loginService;
+
+//    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<?> saveCustomer(@RequestBody AuthenticationRequest authenticationRequest, Principal principal){
+//        ResponseEntity<?> responseEntity = userService.logInUser(authenticationRequest);
+//        return responseEntity;
+//    }
+
+    @GetMapping()
+    public ResponseUtil getUser(@RequestBody UserDTO userDTO){
+        UserDTO dto = loginService.loginUser(userDTO.getUserName(), userDTO.getPassword());
+        return new ResponseUtil(200,"Saved",dto);
     }
 
 }

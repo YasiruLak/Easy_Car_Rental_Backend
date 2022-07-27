@@ -7,6 +7,9 @@ import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 /**
  * @author : Yasiru Dahanayaka
  * @name : Car_Rental_Backend
@@ -24,17 +27,26 @@ public class BrowseController {
     BrowseService browseService;
 
     @GetMapping(params = {"noOfPassenger"})
-    public ResponseUtil sortVehicleNoOfPassenger(@RequestParam int noOfPassenger){
-        return new ResponseUtil(201,"OK",browseService.getAllNoOfPassenger(noOfPassenger));
+    public ResponseUtil sortVehicleNoOfPassenger(@RequestParam int noOfPassenger) {
+        return new ResponseUtil(201, "OK", browseService.getAllNoOfPassenger(noOfPassenger));
     }
 
     @GetMapping(params = {"fuelType"})
-    public ResponseUtil sortVehicleFuelType(@RequestParam FuelType fuelType){
-        return new ResponseUtil(201,"OK",browseService.getAllFuelType(fuelType));
+    public ResponseUtil sortVehicleFuelType(@RequestParam FuelType fuelType) {
+        return new ResponseUtil(201, "OK", browseService.getAllFuelType(fuelType));
     }
 
     @GetMapping(params = {"priceRate"})
-    public ResponseUtil sortVehiclePriceRate(@RequestParam PriceRate priceRate){
-        return new ResponseUtil(201,"OK",browseService.getPriceRate(priceRate));
+    public ResponseUtil sortVehiclePriceRate(@RequestParam PriceRate priceRate) {
+        return new ResponseUtil(201, "OK", browseService.getPriceRate(priceRate));
+    }
+
+    @GetMapping(params = {"pickupDate", "returnDate"})
+    public ResponseUtil loadAvailableVehicles(@RequestParam String pickupDate, @RequestParam String returnDate) {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate pickUp = LocalDate.parse(pickupDate);
+        LocalDate dropOff = LocalDate.parse(returnDate, formatter);
+        return new ResponseUtil(200, "OK", browseService.loadAvailableVehicles(pickUp, dropOff));
+
     }
 }

@@ -37,4 +37,9 @@ public class User {
         this.password = password;
         this.role = role;
     }
+
+    public User(String userName, String password) {
+        this.userName = userName;
+        this.password = password;
+    }
 }
