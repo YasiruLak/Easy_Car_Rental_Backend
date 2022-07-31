@@ -17,7 +17,10 @@ public interface AdminService {
 
     void saveAdmin(AdminDTO adminDTO);
     void deleteAdmin(String id);
+
     void updateAdmin(AdminDTO adminDTO);
+
     AdminDTO searchAdmin(String id);
+
     List<AdminDTO> getAllAdmin();
 }

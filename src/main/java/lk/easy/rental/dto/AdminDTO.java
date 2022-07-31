@@ -15,8 +15,7 @@ import lombok.ToString;
  * @year : 2022
  * @since : 0.1.0
  **/
-@AllArgsConstructor
-@NoArgsConstructor
+
 @Data
 @ToString
 public class AdminDTO {
@@ -28,4 +27,17 @@ public class AdminDTO {
     private String adminEmail;
     private String adminContact;
     private UserDTO user;
+
+    public AdminDTO(String adminId, String adminNic, Name adminName, String adminAddress, String adminEmail, String adminContact, UserDTO user) {
+        this.adminId = adminId;
+        this.adminNic = adminNic;
+        this.adminName = adminName;
+        this.adminAddress = adminAddress;
+        this.adminEmail = adminEmail;
+        this.adminContact = adminContact;
+        this.user = user;
+    }
+
+    public AdminDTO() {
+    }
 }

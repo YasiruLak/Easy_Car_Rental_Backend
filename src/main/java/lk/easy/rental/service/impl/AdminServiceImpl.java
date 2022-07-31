@@ -40,10 +40,10 @@ public class AdminServiceImpl implements AdminService {
     public void saveAdmin(AdminDTO adminDTO) {
         if (!adminRepo.existsById(adminDTO.getAdminId())){
             if (!userRepo.existsByUserName(adminDTO.getUser().getUserName())) {
-            adminRepo.save(mapper.map(adminDTO, Admin.class));
-        }else {
-            throw new DuplicateEntryException("User Name Already Exists");
-        }
+                adminRepo.save(mapper.map(adminDTO, Admin.class));
+            }else {
+                throw new DuplicateEntryException("User Name Already Exists");
+            }
         }else{
             throw new DuplicateEntryException("Admin Already Exists");
         }

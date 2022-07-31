@@ -36,6 +36,8 @@ public class Booking {
     private LocalTime pickUpTime;
     @Column(name = "return_date")
     private LocalDate returnDate;
+    @Column(name = "pick_up_location")
+    private String pickUpLocation;
     @Enumerated(EnumType.STRING)
     @Column(name = "driver_request_type")
     private RequestType driverRequestType;

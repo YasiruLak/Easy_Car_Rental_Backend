@@ -22,8 +22,6 @@ import javax.persistence.*;
 @Entity
 @ToString
 @IdClass(DriverSchedule_PK.class)
-
-//@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
 public class DriverSchedule {
 
     @Id
@@ -32,6 +30,7 @@ public class DriverSchedule {
     @Id
     @Column(name = "booking_id")
     private String bookingId;
+
 
     @ManyToOne
     @JoinColumn(name = "driverId",referencedColumnName = "id",insertable = false,updatable = false)

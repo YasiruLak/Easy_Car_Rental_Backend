@@ -54,7 +54,7 @@ public class DriverServiceImpl implements DriverService {
         if (driverRepo.existsById(id)){
             driverRepo.deleteById(id);
         }else {
-            throw new NotFoundException("Please check the Customer ID.. No Such Customer..!");
+            throw new NotFoundException("Please check the Driver ID.. No Such Driver..!");
         }
     }
 
