@@ -28,24 +28,24 @@ public class DriverController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveDriver(@RequestBody DriverDTO driverDTO){
         driverService.saveDriver(driverDTO);
-        return new ResponseUtil(201,"Saved",null);
+        return new ResponseUtil(200,"Saved",null);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllDrivers(){
-        return new ResponseUtil(201,"OK",driverService.getAllDriver());
+        return new ResponseUtil(200,"OK",driverService.getAllDriver());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateDriver(@RequestBody DriverDTO driverDTO){
         driverService.updateDriver(driverDTO);
-        return new ResponseUtil(201,"Updated",null);
+        return new ResponseUtil(200,"Updated",null);
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchDriver(@PathVariable String id){
         DriverDTO driverDTO = driverService.searchDriver(id);
-        return new ResponseUtil(201,"Loaded", driverDTO);
+        return new ResponseUtil(200,"Loaded", driverDTO);
     }
 
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)

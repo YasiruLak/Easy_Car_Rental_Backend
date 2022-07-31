@@ -29,30 +29,30 @@ public class CustomerController {
     public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.saveCustomer(customerDTO);
         System.out.println(customerDTO.toString());
-        return new ResponseUtil(201,"Saved",null);
+        return new ResponseUtil(200,"Saved",null);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllCustomers(){
-        return new ResponseUtil(201,"OK",customerService.getAllCustomer());
+        return new ResponseUtil(200,"OK",customerService.getAllCustomer());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCustomer(@RequestBody CustomerDTO customerDTO){
         customerService.updateCustomer(customerDTO);
         System.out.println(customerDTO.toString());
-        return new ResponseUtil(201,"Updated",null);
+        return new ResponseUtil(200,"Updated",null);
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchCustomer(@PathVariable String id){
         CustomerDTO customerDTO = customerService.searchCustomer(id);
-        return new ResponseUtil(201,"Loaded", customerDTO);
+        return new ResponseUtil(200,"Loaded", customerDTO);
     }
 
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCustomer(@RequestParam String id){
         customerService.deleteCustomer(id);
-        return new ResponseUtil(201,"Deleted",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 }

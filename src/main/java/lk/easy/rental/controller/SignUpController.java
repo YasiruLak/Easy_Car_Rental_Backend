@@ -29,14 +29,14 @@ public class SignUpController {
     @PostMapping("/driver")
     public ResponseUtil saveDriver(@RequestBody DriverDTO driverDTO){
         signUpService.saveDriver(driverDTO);
-        return new ResponseUtil(201,"Saved",null);
+        return new ResponseUtil(200,"Saved",null);
     }
 
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/customer")
     public ResponseUtil saveCustomer(@RequestBody CustomerDTO customerDTO){
         signUpService.saveCustomer(customerDTO);
-        return new ResponseUtil(201,"Saved",null);
+        return new ResponseUtil(200,"Saved",null);
     }
 
 }

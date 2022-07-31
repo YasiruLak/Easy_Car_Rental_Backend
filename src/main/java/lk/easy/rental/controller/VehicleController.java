@@ -50,7 +50,7 @@ public class VehicleController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil saveVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.saveVehicle(vehicleDTO);
-        return new ResponseUtil(201,"Saved",null);
+        return new ResponseUtil(200,"Saved",null);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
@@ -61,24 +61,24 @@ public class VehicleController {
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateVehicle(@RequestBody VehicleDTO vehicleDTO){
         vehicleService.updateVehicle(vehicleDTO);
-        return new ResponseUtil(201,"Updated",null);
+        return new ResponseUtil(200,"Updated",null);
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchVehicle(@PathVariable String id){
         VehicleDTO vehicleDTO = vehicleService.searchVehicle(id);
-        return new ResponseUtil(201,"Loaded", vehicleDTO);
+        return new ResponseUtil(200,"Loaded", vehicleDTO);
     }
 
     @DeleteMapping(params = {"vehicleId"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteVehicle(@RequestParam String vehicleId){
         vehicleService.deleteVehicle(vehicleId);
-        return new ResponseUtil(201,"Deleted",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 
     @SneakyThrows
     @PostMapping(path = "addCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("carId") String carId) {
+    public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("vehicleId") String carId) {
 
         String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
 
@@ -102,9 +102,9 @@ public class VehicleController {
     }
 
     @GetMapping(path = "getCarImage", produces = MediaType.IMAGE_JPEG_VALUE)
-    public ResponseEntity<?> getCarImage(@RequestParam String carId, String view) {
+    public ResponseEntity<?> getCarImage(@RequestParam String vehicleId, String view) {
 
-        ImageDTO imageDto = new ImageDTO(carId, "car", view);
+        ImageDTO imageDto = new ImageDTO(vehicleId, "car", view);
         Resource fileAsResource1 = fileDownloadUtil.getFileAsResource(imageDto);
 
         if (fileAsResource1==null){
@@ -116,7 +116,7 @@ public class VehicleController {
 
     @SneakyThrows
     @PostMapping(path = "updateCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile, @RequestParam("carId") String carId, @RequestParam("view") String view) {
+    public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile, @RequestParam("vehicleId") String carId, @RequestParam("view") String view) {
 
         String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
 
@@ -129,12 +129,12 @@ public class VehicleController {
 
     @SneakyThrows
     @DeleteMapping(path = "deleteCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteCarAllImages(@RequestParam String carId) {
+    public ResponseUtil deleteCarAllImages(@RequestParam String vehicleId) {
         String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
         String[] carImageView = {"Front", "Back", "Side", "Interior"};
 
         for (int i = 0; i < carImageView.length; i++) {
-            Files.deleteIfExists(Paths.get(pathDirectory + File.separator + carId + carImageView[i] + ".jpeg"));
+            Files.deleteIfExists(Paths.get(pathDirectory + File.separator + vehicleId + carImageView[i] + ".jpeg"));
         }
 
         return new ResponseUtil(200, "car Delete success", null);

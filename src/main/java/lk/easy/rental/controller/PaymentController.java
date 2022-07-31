@@ -28,29 +28,29 @@ public class PaymentController {
     @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil savePayment(@RequestBody PaymentDTO paymentDTO){
         paymentService.savePayment(paymentDTO);
-        return new ResponseUtil(201,"Saved",null);
+        return new ResponseUtil(200,"Saved",null);
     }
 
     @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil getAllPayment(){
-        return new ResponseUtil(201,"OK",paymentService.getAllPayment());
+        return new ResponseUtil(200,"OK",paymentService.getAllPayment());
     }
 
     @PutMapping(produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updatePayment(@RequestBody PaymentDTO paymentDTO){
         paymentService.updatePayment(paymentDTO);
-        return new ResponseUtil(201,"Updated",null);
+        return new ResponseUtil(200,"Updated",null);
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil searchPayment(@PathVariable String id){
         PaymentDTO paymentDTO = paymentService.searchPayment(id);
-        return new ResponseUtil(201,"Loaded", paymentDTO);
+        return new ResponseUtil(200,"Loaded", paymentDTO);
     }
 
     @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deletePayment(@RequestParam String id){
         paymentService.deletePayment(id);
-        return new ResponseUtil(201,"Deleted",null);
+        return new ResponseUtil(200,"Deleted",null);
     }
 }
