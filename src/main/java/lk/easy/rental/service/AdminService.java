@@ -23,4 +23,6 @@ public interface AdminService {
     AdminDTO searchAdmin(String id);
 
     List<AdminDTO> getAllAdmin();
+
+    String generateAdminIds();
 }

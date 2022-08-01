@@ -53,4 +53,9 @@ public class AdminController {
         adminService.deleteAdmin(id);
         return new ResponseUtil(200,"Deleted",null);
     }
+
+    @GetMapping(params = {"test"})
+    public ResponseUtil generateAdminIds(@RequestParam String test) {
+        return new ResponseUtil(200, "Ok", adminService.generateAdminIds());
+    }
 }

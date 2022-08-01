@@ -83,4 +83,9 @@ public class AdminServiceImpl implements AdminService {
             return mapper.map(adminRepo.findAll(), new TypeToken<List<AdminDTO>>(){}.getType());
         }throw new NotFoundException("No Such a Admin");
     }
+
+    @Override
+    public String generateAdminIds() {
+        return adminRepo.generateAdminId();
+    }
 }

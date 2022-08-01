@@ -78,7 +78,7 @@ public class VehicleController {
 
     @SneakyThrows
     @PostMapping(path = "addCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("vehicleId") String carId) {
+    public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("vehicleId") String vehicleId) {
 
         String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
 
@@ -87,7 +87,7 @@ public class VehicleController {
         for (int i = 0; i < multipartFile.length; i++) {
             String[] split = multipartFile[i].getContentType().split("/");
             if (split[1].equals("jpeg") || split[1].equals("png")) {
-                String imageName = carId + carImageView[i] + ".jpeg";
+                String imageName = vehicleId + carImageView[i] + ".jpeg";
                 /*Files.copy(multipartFile[i].getInputStream(), Paths.get(pathDirectory + File.separator + imageName), StandardCopyOption.REPLACE_EXISTING);*/
                 fileUploadUtil.saveFile(pathDirectory+imageName , multipartFile[i]);
 
@@ -116,12 +116,12 @@ public class VehicleController {
 
     @SneakyThrows
     @PostMapping(path = "updateCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile, @RequestParam("vehicleId") String carId, @RequestParam("view") String view) {
+    public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile, @RequestParam("vehicleId") String vehicleId, @RequestParam("view") String view) {
 
         String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
 
-        if (searchFile.searchFile(pathDirectory, carId + view + ".jpeg")) {
-            Files.copy(multipartFile.getInputStream(), Paths.get(pathDirectory + File.separator + carId + view + ".jpeg"), StandardCopyOption.REPLACE_EXISTING);
+        if (searchFile.searchFile(pathDirectory, vehicleId + view + ".jpeg")) {
+            Files.copy(multipartFile.getInputStream(), Paths.get(pathDirectory + File.separator + vehicleId + view + ".jpeg"), StandardCopyOption.REPLACE_EXISTING);
             return new ResponseUtil(200, "car Image Updated", null);
         }
         return new ResponseUtil(200, "car Image Update Fail", null);
