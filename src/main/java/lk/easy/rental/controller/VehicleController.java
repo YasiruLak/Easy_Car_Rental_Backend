@@ -85,7 +85,7 @@ public class VehicleController {
     @PostMapping(path = "addCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("vehicleId") String vehicleId) {
 
-        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
+        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage\\";
 
         String[] carImageView = {"Front", "Back", "Side", "Interior"};
 
@@ -123,7 +123,7 @@ public class VehicleController {
     @PostMapping(path = "updateCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil updateCarImage(@RequestParam(value = "carImage") MultipartFile multipartFile, @RequestParam("vehicleId") String vehicleId, @RequestParam("view") String view) {
 
-        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
+        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage\\";
 
         if (searchFile.searchFile(pathDirectory, vehicleId + view + ".jpeg")) {
             Files.copy(multipartFile.getInputStream(), Paths.get(pathDirectory + File.separator + vehicleId + view + ".jpeg"), StandardCopyOption.REPLACE_EXISTING);
@@ -135,7 +135,7 @@ public class VehicleController {
     @SneakyThrows
     @DeleteMapping(path = "deleteCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteCarAllImages(@RequestParam String vehicleId) {
-        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage";
+        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\carImage\\";
         String[] carImageView = {"Front", "Back", "Side", "Interior"};
 
         for (int i = 0; i < carImageView.length; i++) {

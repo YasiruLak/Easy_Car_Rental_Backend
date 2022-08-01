@@ -14,6 +14,6 @@ import org.springframework.data.jpa.repository.Query;
  **/
 public interface AdminRepo extends JpaRepository<Admin,String> {
 
-    @Query(value = "SELECT admin_id FROM Admin ORDER BY admin_id DESC LIMIT 1", nativeQuery = true)
+    @Query(value = "SELECT admin_id FROM admin ORDER BY admin_id DESC LIMIT 1", nativeQuery = true)
     String generateAdminId();
 }
