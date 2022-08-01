@@ -54,7 +54,7 @@ public class AdminController {
         return new ResponseUtil(200,"Deleted",null);
     }
 
-    @GetMapping(params = {"test"})
+    @GetMapping(params = {"test"},produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil generateAdminIds(@RequestParam String test) {
         return new ResponseUtil(200, "Ok", adminService.generateAdminIds());
     }
