@@ -77,4 +77,24 @@ public class PaymentServiceImpl implements PaymentService {
             return mapper.map(paymentRepo.findAll(), new TypeToken<List<PaymentDTO>>(){}.getType());
         }throw new NotFoundException("No Such a Payment");
     }
+
+    @Override
+    public String generatePaymentIds() {
+        String id = paymentRepo.generatePaymentId();
+        if (id != null) {
+            int tempId = Integer.
+                    parseInt(id.split("-")[1]);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                return "P00-00" + tempId;
+            } else if (tempId <= 99) {
+                return "P00-0" + tempId;
+            } else {
+                return "P00-" + tempId;
+            }
+        } else {
+            return "P00-001";
+
+        }
+    }
 }

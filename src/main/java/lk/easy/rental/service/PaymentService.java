@@ -20,4 +20,5 @@ public interface PaymentService {
     void updatePayment(PaymentDTO paymentDTO);
     PaymentDTO searchPayment(String id);
     List<PaymentDTO> getAllPayment();
+    String generatePaymentIds();
 }

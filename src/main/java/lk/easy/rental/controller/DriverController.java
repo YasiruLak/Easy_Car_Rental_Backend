@@ -55,7 +55,7 @@ public class DriverController {
     }
 
     @GetMapping(params = {"test"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil generateCustomersIds(@RequestParam String test) {
+    public ResponseUtil generateDriverIds(@RequestParam String test) {
         return new ResponseUtil(200, "Ok", driverService.generateDriverIds());
     }
 }
