@@ -83,4 +83,24 @@ public class DriverServiceImpl implements DriverService {
             return mapper.map(driverRepo.findAll(), new TypeToken<List<DriverDTO>>(){}.getType());
         }throw new NotFoundException("No Such a Driver");
     }
+
+    @Override
+    public String generateDriverIds() {
+        String id = driverRepo.generateDriverId();
+        if (id != null) {
+            int tempId = Integer.
+                    parseInt(id.split("-")[1]);
+            tempId = tempId + 1;
+            if (tempId <= 9) {
+                return "D00-00" + tempId;
+            } else if (tempId <= 99) {
+                return "D00-0" + tempId;
+            } else {
+                return "D00-" + tempId;
+            }
+        } else {
+            return "D00-001";
+
+        }
+    }
 }

@@ -53,4 +53,9 @@ public class BookingController {
         bookingService.deleteBooking(id);
         return new ResponseUtil(200,"Deleted",null);
     }
+
+    @GetMapping(params = {"test"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateBookingIds(@RequestParam String test) {
+        return new ResponseUtil(200, "Ok", bookingService.generateBookingIds());
+    }
 }

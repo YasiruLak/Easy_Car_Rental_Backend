@@ -19,4 +19,5 @@ public interface DriverService {
     void updateDriver(DriverDTO driverDTO);
     DriverDTO searchDriver(String id);
     List<DriverDTO> getAllDriver();
+    String generateDriverIds();
 }
