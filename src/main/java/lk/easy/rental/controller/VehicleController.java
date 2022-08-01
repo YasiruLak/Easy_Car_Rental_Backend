@@ -76,6 +76,11 @@ public class VehicleController {
         return new ResponseUtil(200,"Deleted",null);
     }
 
+    @GetMapping(params = {"test"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil generateVehicleIds(@RequestParam String test) {
+        return new ResponseUtil(200, "Ok", vehicleService.generateVehicleIds());
+    }
+
     @SneakyThrows
     @PostMapping(path = "addCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("vehicleId") String vehicleId) {
