@@ -116,4 +116,9 @@ public class CustomerServiceImpl implements CustomerService {
     public String generateCustomerIds() {
         return customerRepo.generateCustomerId();
     }
+
+    @Override
+    public int countCustomer() {
+        return customerRepo.countCustomer();
+    }
 }

@@ -60,4 +60,9 @@ public class CustomerController {
     public ResponseUtil generateCustomersIds(@RequestParam String test) {
         return new ResponseUtil(200, "Ok", customerService.generateCustomerIds());
     }
+
+    @GetMapping(path ="/COUNT/{count}")
+    public ResponseUtil countCustomers(@PathVariable String count){
+        return new ResponseUtil(200, "Ök", customerService.countCustomer());
+    }
 }
