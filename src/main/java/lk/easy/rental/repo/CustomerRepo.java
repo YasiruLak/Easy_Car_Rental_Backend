@@ -2,6 +2,7 @@ package lk.easy.rental.repo;
 
 import lk.easy.rental.entity.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -12,4 +13,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * @since : 0.1.0
  **/
 public interface CustomerRepo extends JpaRepository<Customer,String> {
+
+    @Query(value = "SELECT id FROM Customer ORDER BY id DESC LIMIT 1", nativeQuery = true)
+    String generateCustomerId();
 }

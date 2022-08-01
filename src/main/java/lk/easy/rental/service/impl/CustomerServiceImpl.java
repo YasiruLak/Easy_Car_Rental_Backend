@@ -111,4 +111,9 @@ public class CustomerServiceImpl implements CustomerService {
         throw new NotFoundException("No Such a Customer");
 
     }
+
+    @Override
+    public String generateCustomerIds() {
+        return customerRepo.generateCustomerId();
+    }
 }

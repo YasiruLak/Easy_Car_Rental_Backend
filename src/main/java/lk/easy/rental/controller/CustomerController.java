@@ -55,4 +55,9 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return new ResponseUtil(200,"Deleted",null);
     }
+
+    @GetMapping(params = {"test"})
+    public ResponseUtil generateCustomersIds(@RequestParam String test) {
+        return new ResponseUtil(200, "Ok", customerService.generateCustomerIds());
+    }
 }
