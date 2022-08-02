@@ -83,7 +83,6 @@ public class BrowseServiceImpl implements BrowseService {
             }
         }
 
-
         L1:for (Vehicle temp : vehicleRepo.findAll()) {
             L2: for (Vehicle notAvailableVehicle : notAvailableVehicles) {
                 if (temp.getVehicleId().equals(notAvailableVehicle.getVehicleId())){

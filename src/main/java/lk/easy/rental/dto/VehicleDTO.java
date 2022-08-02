@@ -39,5 +39,6 @@ public class VehicleDTO {
     private PriceRate vehiclePriceRate;
     private Mileage freeMileage;
     private int lastServiceMileage;
+    private int noOfVehicle;
     private AvailabilityType vehicleAvailability;
 }

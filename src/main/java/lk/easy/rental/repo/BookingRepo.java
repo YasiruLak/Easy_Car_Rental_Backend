@@ -25,4 +25,6 @@ public interface BookingRepo extends JpaRepository<Booking,String> {
     String generateBookingIds();
 
 
+
+
 }

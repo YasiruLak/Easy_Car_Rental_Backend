@@ -71,7 +71,7 @@ public class SignUpController {
                 return new ResponseUtil(404, "please..  must be images type  jpeg or png", null);
             }
         }
-        return new ResponseUtil(200, "Car images added complete", null);
+        return new ResponseUtil(200, "User images added complete", null);
     }
 
 }

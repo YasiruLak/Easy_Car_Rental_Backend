@@ -43,7 +43,7 @@ public class CustomerServiceImpl implements CustomerService {
 
 //    @Override
 //    public void saveCustomer(CustomerDTO customerDTO) {
-//        if (!customerRepo.existsById(customerDTO.getCustomerId())) {
+//        if (!customerRepo.existsById(customerDTO.getId())) {
 //            if (!userRepo.existsByUserName(customerDTO.getUser().getUserName())) {
 //                Customer customer = mapper.map(customerDTO, Customer.class);
 //                customer.getUser().setPassword(passwordConfig.passwordEncoder().encode(customerDTO.getUser().getPassword()));

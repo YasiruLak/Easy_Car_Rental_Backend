@@ -35,11 +35,11 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-//    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-//    public ResponseEntity<?> saveCustomer(@RequestBody AuthenticationRequest authenticationRequest, Principal principal){
-//        ResponseEntity<?> responseEntity = userService.logInUser(authenticationRequest);
-//        return responseEntity;
-//    }
+    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<?> logInUser(@RequestBody AuthenticationRequest authenticationRequest, Principal principal){
+        ResponseEntity<?> responseEntity = userService.logInUser(authenticationRequest);
+        return responseEntity;
+    }
 
     @GetMapping()
     public ResponseUtil getUser(@RequestBody UserDTO userDTO){
