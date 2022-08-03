@@ -95,14 +95,10 @@ public class VehicleController {
                 String imageName = vehicleId + carImageView[i] + ".jpeg";
                 /*Files.copy(multipartFile[i].getInputStream(), Paths.get(pathDirectory + File.separator + imageName), StandardCopyOption.REPLACE_EXISTING);*/
                 fileUploadUtil.saveFile(pathDirectory+imageName , multipartFile[i]);
-
             } else {
                 return new ResponseUtil(404, "please..  must be Car images type  jpeg or png", null);
-
             }
-
         }
-
         return new ResponseUtil(200, "Car images added complete", null);
     }
 
@@ -116,7 +112,6 @@ public class VehicleController {
             return ResponseEntity.badRequest().contentType(MediaType.APPLICATION_JSON).body("Car Image not found");
         }
         return ResponseEntity.ok().contentType(MediaType.IMAGE_JPEG).body(fileAsResource1);
-
     }
 
     @SneakyThrows
@@ -141,8 +136,11 @@ public class VehicleController {
         for (int i = 0; i < carImageView.length; i++) {
             Files.deleteIfExists(Paths.get(pathDirectory + File.separator + vehicleId + carImageView[i] + ".jpeg"));
         }
-
         return new ResponseUtil(200, "car Delete success", null);
     }
 
+    @GetMapping(params = {"brand","type"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAllGeneralVehicle(@RequestParam String brand,@RequestParam String type) {
+        return new ResponseUtil(200, "Ok", vehicleService.brandAndTypeCount(brand,type));
+    }
 }

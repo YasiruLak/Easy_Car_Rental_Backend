@@ -92,7 +92,11 @@ public class VehicleServiceImpl implements VehicleService {
             }
         } else {
             return "V00-001";
-
         }
+    }
+
+    @Override
+    public int brandAndTypeCount(String brand, String type) {
+        return vehicleRepo.getAllCountByVehicleTypeAndBrand(brand,type);
     }
 }

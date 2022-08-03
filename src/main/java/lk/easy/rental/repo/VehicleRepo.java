@@ -5,6 +5,7 @@ import lk.easy.rental.entity.Vehicle;
 import lk.easy.rental.enums.FuelType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
@@ -26,4 +27,7 @@ public interface VehicleRepo extends JpaRepository<Vehicle,String> {
 
     @Query(value = "SELECT vehicleId FROM vehicle ORDER BY vehicleId DESC LIMIT 1", nativeQuery = true)
     String generateVehicleId();
+
+    @Query(value = "SELECT COUNT(*) FROM vehicle WHERE brand=:brand AND vehicle_type=:type",nativeQuery = true)
+    int getAllCountByVehicleTypeAndBrand(@Param("brand") String brand, @Param("type") String type);
 }
