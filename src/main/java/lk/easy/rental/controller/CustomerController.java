@@ -64,9 +64,9 @@ public class CustomerController {
         return new ResponseUtil(200, "Ok", customerService.generateCustomerIds());
     }
 
-    @GetMapping(path ="/COUNT/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(path ="/customerCount/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil countCustomers(@PathVariable String count){
-        return new ResponseUtil(200, "Ök", customerService.countCustomer());
+        return new ResponseUtil(200, "Ok", customerService.countCustomer());
     }
 
     @SneakyThrows

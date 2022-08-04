@@ -134,7 +134,7 @@ public class CustomerServiceImpl implements CustomerService {
     }
 
     @Override
-    public int countCustomer() {
-        return customerRepo.countCustomer();
+    public long countCustomer() {
+        return customerRepo.count();
     }
 }

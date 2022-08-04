@@ -21,4 +21,5 @@ public interface VehicleService {
     List<VehicleDTO> getAllVehicle();
     String generateVehicleIds();
     int brandAndTypeCount(String brand, String type);
+    long countVehicle();
 }

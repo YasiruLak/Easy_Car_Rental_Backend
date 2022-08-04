@@ -99,4 +99,9 @@ public class VehicleServiceImpl implements VehicleService {
     public int brandAndTypeCount(String brand, String type) {
         return vehicleRepo.getAllCountByVehicleTypeAndBrand(brand,type);
     }
+
+    @Override
+    public long countVehicle() {
+        return vehicleRepo.count();
+    }
 }

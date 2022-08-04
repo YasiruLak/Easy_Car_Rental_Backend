@@ -64,6 +64,11 @@ public class DriverController {
         return new ResponseUtil(200, "Ok", driverService.generateDriverIds());
     }
 
+    @GetMapping(path ="/driverCount/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil countDrivers(@PathVariable String count){
+        return new ResponseUtil(200, "Ok", driverService.countDrivers());
+    }
+
     @SneakyThrows
     @DeleteMapping(path = "deleteDriverImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteAllCustomerImages(@RequestParam String id) {

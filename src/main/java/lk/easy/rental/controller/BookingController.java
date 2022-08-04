@@ -58,4 +58,9 @@ public class BookingController {
     public ResponseUtil generateBookingIds(@RequestParam String test) {
         return new ResponseUtil(200, "Ok", bookingService.generateBookingIds());
     }
+
+    @GetMapping(path ="/bookingCount/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil countBooking(@PathVariable String count){
+        return new ResponseUtil(200, "Ok", bookingService.countBooking());
+    }
 }

@@ -20,4 +20,5 @@ public interface BookingService {
     BookingDTO searchBooking(String id);
     List<BookingDTO> getAllBooking();
     String generateBookingIds();
+    long countBooking();
 }

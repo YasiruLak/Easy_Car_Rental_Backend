@@ -105,4 +105,9 @@ public class BookingServiceImpl implements BookingService {
 
         }
     }
+
+    @Override
+    public long countBooking() {
+        return bookingRepo.count();
+    }
 }

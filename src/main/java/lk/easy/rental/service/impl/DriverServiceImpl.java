@@ -103,4 +103,9 @@ public class DriverServiceImpl implements DriverService {
 
         }
     }
+
+    @Override
+    public long countDrivers() {
+        return driverRepo.count();
+    }
 }

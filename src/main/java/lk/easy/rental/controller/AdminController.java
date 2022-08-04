@@ -58,4 +58,9 @@ public class AdminController {
     public ResponseUtil generateAdminIds(@RequestParam String test) {
         return new ResponseUtil(200, "Ok", adminService.generateAdminIds());
     }
+
+    @GetMapping(path ="/adminCount/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil countBooking(@PathVariable String count){
+        return new ResponseUtil(200, "Ok", adminService.countAdmin());
+    }
 }

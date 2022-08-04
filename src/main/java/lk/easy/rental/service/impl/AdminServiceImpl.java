@@ -102,4 +102,9 @@ public class AdminServiceImpl implements AdminService {
             return "A00-001";
         }
     }
+
+    @Override
+    public long countAdmin() {
+        return adminRepo.count();
+    }
 }

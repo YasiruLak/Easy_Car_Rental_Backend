@@ -81,6 +81,11 @@ public class VehicleController {
         return new ResponseUtil(200, "Ok", vehicleService.generateVehicleIds());
     }
 
+    @GetMapping(path ="/vehicleCount/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil countVehicles(@PathVariable String count){
+        return new ResponseUtil(200, "Ok", vehicleService.countVehicle());
+    }
+
     @SneakyThrows
     @PostMapping(path = "addCarImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil addCarImage(@RequestParam(value = "param") MultipartFile[] multipartFile, @RequestParam("vehicleId") String vehicleId) {

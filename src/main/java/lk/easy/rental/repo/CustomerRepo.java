@@ -14,12 +14,8 @@ import org.springframework.data.jpa.repository.Query;
  **/
 public interface CustomerRepo extends JpaRepository<Customer,String> {
 
-    @Query(value = "SELECT COUNT(*) FROM Customer", nativeQuery = true)
-    int countCustomer();
-
     @Query(value = "SELECT id FROM Customer ORDER BY id DESC LIMIT 1", nativeQuery = true)
     String generateCustomerId();
 
-//    int countById();
 
 }
