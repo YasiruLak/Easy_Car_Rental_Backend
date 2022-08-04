@@ -3,10 +3,15 @@ package lk.easy.rental.controller;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.service.CustomerService;
 import lk.easy.rental.util.ResponseUtil;
+import lombok.SneakyThrows;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -62,5 +67,18 @@ public class CustomerController {
     @GetMapping(path ="/COUNT/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil countCustomers(@PathVariable String count){
         return new ResponseUtil(200, "Ök", customerService.countCustomer());
+    }
+
+    @SneakyThrows
+    @DeleteMapping(path = "deleteCustomerImage", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deleteAllCustomerImages(@RequestParam String id) {
+        String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\registerImage\\";
+
+        String[] registerImageView = {"Nic", "Licence"};
+
+        for (int i = 0; i < registerImageView.length; i++) {
+            Files.deleteIfExists(Paths.get(pathDirectory + File.separator + id + registerImageView[i] + ".jpeg"));
+        }
+        return new ResponseUtil(200, "Customer Data Delete success", null);
     }
 }
