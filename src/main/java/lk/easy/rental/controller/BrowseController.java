@@ -2,6 +2,8 @@ package lk.easy.rental.controller;
 
 import lk.easy.rental.embeded.PriceRate;
 import lk.easy.rental.enums.FuelType;
+import lk.easy.rental.enums.TransmissionType;
+import lk.easy.rental.enums.VehicleType;
 import lk.easy.rental.service.BrowseService;
 import lk.easy.rental.util.ResponseUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,6 +41,21 @@ public class BrowseController {
     @GetMapping(params = {"priceRate"})
     public ResponseUtil sortVehiclePriceRate(@RequestParam PriceRate priceRate) {
         return new ResponseUtil(201, "OK", browseService.getPriceRate(priceRate));
+    }
+
+    @GetMapping(params = "brand")
+    public ResponseUtil sortVehicleByBrand(@RequestParam String brand){
+        return new ResponseUtil(200,"OK", browseService.getVehicleByBrand(brand));
+    }
+
+    @GetMapping(params = "type")
+    public ResponseUtil sortVehicleByType(@RequestParam VehicleType type){
+        return new ResponseUtil(200,"OK", browseService.getVehicleByType(type));
+    }
+
+    @GetMapping(params = "transmissionType")
+    public ResponseUtil sortVehicleByTransmissionType(@RequestParam TransmissionType transmissionType){
+        return new ResponseUtil(200,"OK", browseService.getVehicleByTransmissionType(transmissionType));
     }
 
     @GetMapping(params = {"pickUpDate", "returnDate"})

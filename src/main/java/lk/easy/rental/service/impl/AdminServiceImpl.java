@@ -3,6 +3,7 @@ package lk.easy.rental.service.impl;
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.*;
+import lk.easy.rental.enums.RequestType;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.*;
@@ -44,6 +45,9 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     UserRepo userRepo;
+
+    @Autowired
+    VehicleRepo vehicleRepo;
 
     @Override
     public void saveAdmin(AdminDTO adminDTO) {
@@ -142,6 +146,24 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public void denyCustomer(String denyCustomer) {
         customerRequestRepo.deleteById(denyCustomer);
+    }
+
+    @Override
+    public void notifyMaintenance() {
+        List<Vehicle> allVehicles = vehicleRepo.findAll();
+
+        for (Vehicle vehicle : allVehicles) {
+
+            int lastServiceMileage = vehicle.getLastServiceMileage();
+            int mileage = vehicle.getVehicleMileage();
+
+            if (mileage >= (lastServiceMileage+5000)){
+                vehicle.setNeedMaintenance(RequestType.YES);
+            }else {
+                vehicle.setNeedMaintenance(RequestType.NO);
+            }
+            vehicleRepo.save(vehicle);
+        }
     }
 
 //    @Override

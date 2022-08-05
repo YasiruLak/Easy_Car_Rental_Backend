@@ -84,6 +84,12 @@ public class AdminController {
         return new ResponseUtil(200,"OK",null);
     }
 
+    @PutMapping("notifyMaintenance")
+    public ResponseUtil notifyMaintenance(){
+        adminService.notifyMaintenance();
+        return new ResponseUtil(200,"OK", null);
+    }
+
 //    @PutMapping(params = {"id"})
 //    public ResponseUtil acceptBookingRequest(@RequestParam String id){
 //

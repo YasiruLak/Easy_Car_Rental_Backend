@@ -2,10 +2,7 @@ package lk.easy.rental.dto;
 
 import lk.easy.rental.embeded.Mileage;
 import lk.easy.rental.embeded.PriceRate;
-import lk.easy.rental.enums.AvailabilityType;
-import lk.easy.rental.enums.FuelType;
-import lk.easy.rental.enums.TransmissionType;
-import lk.easy.rental.enums.VehicleType;
+import lk.easy.rental.enums.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -41,4 +38,5 @@ public class VehicleDTO {
     private int lastServiceMileage;
     private double extraKmPer;
     private AvailabilityType vehicleAvailability;
+    private RequestType needMaintenance;
 }

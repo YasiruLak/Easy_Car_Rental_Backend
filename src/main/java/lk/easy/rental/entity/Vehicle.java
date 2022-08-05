@@ -3,10 +3,7 @@ package lk.easy.rental.entity;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lk.easy.rental.embeded.Mileage;
 import lk.easy.rental.embeded.PriceRate;
-import lk.easy.rental.enums.AvailabilityType;
-import lk.easy.rental.enums.FuelType;
-import lk.easy.rental.enums.TransmissionType;
-import lk.easy.rental.enums.VehicleType;
+import lk.easy.rental.enums.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -65,4 +62,5 @@ public class Vehicle {
     @Enumerated(EnumType.STRING)
     @Column(name = "availability")
     private AvailabilityType vehicleAvailability;
+    private RequestType needMaintenance;
 }

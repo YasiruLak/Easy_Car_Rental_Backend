@@ -78,7 +78,7 @@ public class DriverController {
 
     @SneakyThrows
     @DeleteMapping(path = "deleteDriverImage", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deleteAllCustomerImages(@RequestParam String id) {
+    public ResponseUtil deleteAllDriverImages(@RequestParam String id) {
         String pathDirectory = "F:\\Project\\Web-Second Sem\\Spring Projects\\Easy Car Rental System\\Car_Rental_Backend\\src\\main\\resources\\static\\image\\registerImage\\";
 
         String[] registerImageView = {"Nic", "Licence"};

@@ -27,6 +27,7 @@ public interface AdminService {
     void acceptCustomer(CustomerDTO dto);
 
     void denyCustomer(String denyCustomer);
+    void notifyMaintenance();
 
 //    void acceptBookingRequest(String id);
 //

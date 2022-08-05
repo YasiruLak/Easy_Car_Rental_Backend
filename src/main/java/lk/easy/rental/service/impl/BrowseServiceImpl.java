@@ -6,6 +6,8 @@ import lk.easy.rental.entity.Booking;
 import lk.easy.rental.entity.BookingDetails;
 import lk.easy.rental.entity.Vehicle;
 import lk.easy.rental.enums.FuelType;
+import lk.easy.rental.enums.TransmissionType;
+import lk.easy.rental.enums.VehicleType;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.BookingRepo;
 import lk.easy.rental.repo.VehicleRepo;
@@ -67,6 +69,24 @@ public class BrowseServiceImpl implements BrowseService {
             }.getType());
         }
         throw new NotFoundException("No Such a Result");
+    }
+
+    @Override
+    public List<VehicleDTO> getVehicleByBrand(String brand) {
+        return mapper.map(vehicleRepo.findAllByVehicleBrand(brand), new TypeToken<List<VehicleDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public List<VehicleDTO> getVehicleByType(VehicleType type) {
+        return mapper.map(vehicleRepo.findAllByVehicleType(type), new TypeToken<List<VehicleDTO>>() {
+        }.getType());
+    }
+
+    @Override
+    public List<VehicleDTO> getVehicleByTransmissionType(TransmissionType transmissionType) {
+        return mapper.map(vehicleRepo.findAllByTransmissionType(transmissionType), new TypeToken<List<VehicleDTO>>() {
+        }.getType());
     }
 
     @Override
