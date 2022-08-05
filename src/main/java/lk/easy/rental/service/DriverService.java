@@ -1,5 +1,6 @@
 package lk.easy.rental.service;
 
+import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.DriverDTO;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface DriverService {
     List<DriverDTO> getAllDriver();
     String generateDriverIds();
     long countDrivers();
+    DriverDTO getDriverInUserName(String userName);
+
+    DriverDTO getAvailableDriver();
 }

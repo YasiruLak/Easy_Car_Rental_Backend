@@ -4,6 +4,7 @@ import lk.easy.rental.config.PasswordConfig;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.Customer;
 import lk.easy.rental.entity.Driver;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.CustomerRepo;
@@ -136,5 +137,16 @@ public class CustomerServiceImpl implements CustomerService {
     @Override
     public long countCustomer() {
         return customerRepo.count();
+    }
+
+    @Override
+    public CustomerDTO getCustomerInUserName(String userName) {
+        if (userRepo.existsByUserName(userName)) {
+            User byId = userRepo.findByUserName(userName);
+            return mapper.map(customerRepo.findByUser(byId), CustomerDTO.class);
+        }else {
+            throw new NotFoundException("Customer Not Found");
+
+        }
     }
 }

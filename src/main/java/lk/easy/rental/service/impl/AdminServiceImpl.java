@@ -1,7 +1,9 @@
 package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.AdminDTO;
+import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.Admin;
+import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.AdminRepo;
@@ -106,5 +108,16 @@ public class AdminServiceImpl implements AdminService {
     @Override
     public long countAdmin() {
         return adminRepo.count();
+    }
+
+    @Override
+    public AdminDTO getAdminInUserName(String userName) {
+        if (userRepo.existsByUserName(userName)) {
+            User byId = userRepo.findByUserName(userName);
+            return mapper.map(adminRepo.findByUser(byId), AdminDTO.class);
+        }else {
+            throw new NotFoundException("Admin Not Found");
+
+        }
     }
 }

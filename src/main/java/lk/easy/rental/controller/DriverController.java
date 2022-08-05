@@ -69,6 +69,11 @@ public class DriverController {
         return new ResponseUtil(200, "Ok", driverService.countDrivers());
     }
 
+    @GetMapping(params = {"userName"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getDriverInUserName(@RequestParam String userName) {
+        return new ResponseUtil(200, "Ok", driverService.getDriverInUserName(userName));
+    }
+
     @SneakyThrows
     @DeleteMapping(path = "deleteDriverImage", produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil deleteAllCustomerImages(@RequestParam String id) {
@@ -80,5 +85,10 @@ public class DriverController {
             Files.deleteIfExists(Paths.get(pathDirectory + File.separator + id + registerImageView[i] + ".jpeg"));
         }
         return new ResponseUtil(200, "Driver Data Delete success", null);
+    }
+
+    @GetMapping( "getAvailableDriver")
+    public ResponseUtil getAvailableDriver(){
+        return new ResponseUtil(200,"OK", driverService.getAvailableDriver());
     }
 }

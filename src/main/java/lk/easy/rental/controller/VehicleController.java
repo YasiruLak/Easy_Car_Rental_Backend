@@ -148,4 +148,10 @@ public class VehicleController {
     public ResponseUtil getAllGeneralVehicle(@RequestParam String brand,@RequestParam String type) {
         return new ResponseUtil(200, "Ok", vehicleService.brandAndTypeCount(brand,type));
     }
+
+    @GetMapping( params= {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchVehicleById(@RequestParam String id) {
+        VehicleDTO vehicleDTO = vehicleService.searchVehicle(id);
+        return new ResponseUtil(200,"Found",vehicleDTO);
+    }
 }

@@ -41,10 +41,10 @@ public class BrowseController {
         return new ResponseUtil(201, "OK", browseService.getPriceRate(priceRate));
     }
 
-    @GetMapping(params = {"pickupDate", "returnDate"})
-    public ResponseUtil loadAvailableVehicles(@RequestParam String pickupDate, @RequestParam String returnDate) {
+    @GetMapping(params = {"pickUpDate", "returnDate"})
+    public ResponseUtil loadAvailableVehicles(@RequestParam String pickUpDate, @RequestParam String returnDate) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
-        LocalDate pickUp = LocalDate.parse(pickupDate);
+        LocalDate pickUp = LocalDate.parse(pickUpDate);
         LocalDate dropOff = LocalDate.parse(returnDate, formatter);
         return new ResponseUtil(200, "OK", browseService.loadAvailableVehicles(pickUp, dropOff));
 

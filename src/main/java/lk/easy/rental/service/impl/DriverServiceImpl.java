@@ -1,7 +1,10 @@
 package lk.easy.rental.service.impl;
 
+import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.dto.DriverDTO;
 import lk.easy.rental.entity.Driver;
+import lk.easy.rental.entity.User;
+import lk.easy.rental.enums.AvailabilityType;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.DriverRepo;
@@ -108,4 +111,23 @@ public class DriverServiceImpl implements DriverService {
     public long countDrivers() {
         return driverRepo.count();
     }
+
+    @Override
+    public DriverDTO getDriverInUserName(String userName) {
+        if (userRepo.existsByUserName(userName)) {
+            User byId = userRepo.findByUserName(userName);
+            return mapper.map(driverRepo.findByUser(byId), DriverDTO.class);
+        }else {
+            throw new NotFoundException("Driver Not Found");
+
+        }
+    }
+
+    @Override
+    public DriverDTO getAvailableDriver() {
+        Driver availableDriver = driverRepo.findFirstByDriverAvailability(AvailabilityType.AVAILABLE);
+
+        return mapper.map(availableDriver,DriverDTO.class);
+    }
+
 }

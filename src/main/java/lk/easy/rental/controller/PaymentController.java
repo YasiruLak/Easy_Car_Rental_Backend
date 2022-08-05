@@ -42,15 +42,15 @@ public class PaymentController {
         return new ResponseUtil(200,"Updated",null);
     }
 
-    @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil searchPayment(@PathVariable String id){
-        PaymentDTO paymentDTO = paymentService.searchPayment(id);
+    @GetMapping(path = "/{paymentId}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil searchPayment(@PathVariable String paymentId){
+        PaymentDTO paymentDTO = paymentService.searchPayment(paymentId);
         return new ResponseUtil(200,"Loaded", paymentDTO);
     }
 
-    @DeleteMapping(params = {"id"},produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseUtil deletePayment(@RequestParam String id){
-        paymentService.deletePayment(id);
+    @DeleteMapping(params = {"paymentId"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil deletePayment(@RequestParam String paymentId){
+        paymentService.deletePayment(paymentId);
         return new ResponseUtil(200,"Deleted",null);
     }
 

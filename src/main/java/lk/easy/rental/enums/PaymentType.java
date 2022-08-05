@@ -13,6 +13,7 @@ import lombok.ToString;
 @ToString
 public enum PaymentType {
 
-    DAMAGE_FEE,
-    RENT_FEE
+    DAMAGE,
+    RENT,
+    OTHER
 }

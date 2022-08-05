@@ -34,6 +34,7 @@ public class BookingDTO {
     private LocalDate returnDate;
     private RequestType DriverRequestType;
     private CustomerDTO customer;
+    private String pickUpLocation;
     private List<BookingDetailsDTO> bookingDetails;
     private List<DriverScheduleDTO> driverSchedules;
 }

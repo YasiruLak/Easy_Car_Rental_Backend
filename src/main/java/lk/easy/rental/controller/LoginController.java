@@ -35,15 +35,15 @@ public class LoginController {
     @Autowired
     LoginService loginService;
 
-    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<?> logInUser(@RequestBody AuthenticationRequest authenticationRequest, Principal principal){
-        ResponseEntity<?> responseEntity = userService.logInUser(authenticationRequest);
-        return responseEntity;
-    }
+//    @PostMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+//    public ResponseEntity<?> logInUser(@RequestBody AuthenticationRequest authenticationRequest, Principal principal){
+//        ResponseEntity<?> responseEntity = userService.logInUser(authenticationRequest);
+//        return responseEntity;
+//    }
 
-    @GetMapping()
-    public ResponseUtil getUser(@RequestBody UserDTO userDTO){
-        UserDTO dto = loginService.loginUser(userDTO.getUserName(), userDTO.getPassword());
+    @GetMapping(params = {"userName","password"})
+    public ResponseUtil getUser(@RequestParam String userName, @RequestParam String password){
+        UserDTO dto = loginService.loginUser(userName,password);
         return new ResponseUtil(200,"Saved",dto);
     }
 

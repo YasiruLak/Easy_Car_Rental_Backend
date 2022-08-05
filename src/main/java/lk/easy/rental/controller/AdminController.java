@@ -63,4 +63,9 @@ public class AdminController {
     public ResponseUtil countBooking(@PathVariable String count){
         return new ResponseUtil(200, "Ok", adminService.countAdmin());
     }
+
+    @GetMapping(params = {"userName"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getAdminInUserName(@RequestParam String userName) {
+        return new ResponseUtil(200, "Ok", adminService.getAdminInUserName(userName));
+    }
 }

@@ -64,6 +64,11 @@ public class CustomerController {
         return new ResponseUtil(200, "Ok", customerService.generateCustomerIds());
     }
 
+    @GetMapping(params = {"userName"},produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseUtil getCustomerInUserName(@RequestParam String userName) {
+        return new ResponseUtil(200, "Ok", customerService.getCustomerInUserName(userName));
+    }
+
     @GetMapping(path ="/customerCount/{count}",produces = MediaType.APPLICATION_JSON_VALUE)
     public ResponseUtil countCustomers(@PathVariable String count){
         return new ResponseUtil(200, "Ok", customerService.countCustomer());
