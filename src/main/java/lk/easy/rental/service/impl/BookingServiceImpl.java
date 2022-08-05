@@ -2,6 +2,7 @@ package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.BookingDTO;
 import lk.easy.rental.entity.Booking;
+import lk.easy.rental.enums.RequestType;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.BookingDetailRepo;
@@ -43,10 +44,41 @@ public class BookingServiceImpl implements BookingService {
     @Override
     public void saveBooking(BookingDTO bookingDTO) {
         if (!bookingRepo.existsById(bookingDTO.getBookingId())) {
-            bookingRepo.save(mapper.map(bookingDTO, Booking.class));
-        } else {
-            throw new DuplicateEntryException("Already Done");
+            if(customerRepo.existsById(bookingDTO.getCustomer().getId())){
+                if (!bookingDTO.getBookingDetails().isEmpty()){
+                    //System.out.println(bookingDTO.getDriverRequestType());
+                    if (bookingDTO.getDriverRequestType() == RequestType.YES){
+                        //Driver is needed
+
+                        if (!bookingDTO.getDriverSchedules().isEmpty()) {
+                            //System.out.println("Here");
+                            bookingRepo.save(mapper.map(bookingDTO, Booking.class));
+                        }
+                    }else {
+                        //No driver Is needed
+
+                        bookingRepo.save(mapper.map(bookingDTO, Booking.class));
+                    }
+
+                }else {
+                    throw new RuntimeException("No vehicles added for the booking..!");
+                }
+
+            }else {
+                throw new NotFoundException("Customer Not Found..!");
+            }
+
+        }else {
+            throw new DuplicateEntryException("Booking already exists with this Id");
         }
+
+        //update the vehicle
+
+            /*for (OrderDetails  : dto.getBookedVehicleList()) {
+                Item item = itemRepo.findById(orderDetail.getItemCode()).get();
+                item.setQtyOnHand(item.getQtyOnHand() - orderDetail.getQty());
+                itemRepo.save(item);
+            }*/
     }
 
     @Override

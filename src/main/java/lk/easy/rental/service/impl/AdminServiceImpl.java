@@ -2,12 +2,10 @@ package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.AdminDTO;
 import lk.easy.rental.dto.CustomerDTO;
-import lk.easy.rental.entity.Admin;
-import lk.easy.rental.entity.User;
+import lk.easy.rental.entity.*;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
-import lk.easy.rental.repo.AdminRepo;
-import lk.easy.rental.repo.UserRepo;
+import lk.easy.rental.repo.*;
 import lk.easy.rental.service.AdminService;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.TypeToken;
@@ -34,6 +32,15 @@ public class AdminServiceImpl implements AdminService {
 
     @Autowired
     AdminRepo adminRepo;
+
+    @Autowired
+    UserRequestRepo userRequestRepo;
+
+    @Autowired
+    CustomerRequestRepo customerRequestRepo;
+
+    @Autowired
+    CustomerRepo customerRepo;
 
     @Autowired
     UserRepo userRepo;
@@ -120,4 +127,35 @@ public class AdminServiceImpl implements AdminService {
 
         }
     }
+
+    @Override
+    public void acceptCustomer(CustomerDTO dto) {
+        CustomerRequest customerRequest = customerRequestRepo.findById(dto.getId()).get();
+        User user = mapper.map(customerRequest.getUser(), User.class);
+        Customer customer = mapper.map(dto, Customer.class);
+        customer.setUser(user);
+
+        customerRepo.save(customer);
+        customerRequestRepo.deleteById(dto.getId());
+    }
+
+    @Override
+    public void denyCustomer(String denyCustomer) {
+        customerRequestRepo.deleteById(denyCustomer);
+    }
+
+//    @Override
+//    public void acceptBookingRequest(String id) {
+//        Booking bookingRequest = bookingRepo.findById(id).get();
+//        bookingRequest.setStatus(BookingStatus.ACCEPTED);
+//        bookingRepo.save(bookingRequest);
+//    }
+//
+//    @Override
+//    public void denyBookingRequest(String id, String reason) {
+//        bookingRepo.findById(id).get();
+//        bookingRequest.setStatus(BookingStatus.DENIED);
+//        bookingRequest.setDeniedReason(reason);
+//        bookingRepo.save(bookingRequest);
+//    }
 }

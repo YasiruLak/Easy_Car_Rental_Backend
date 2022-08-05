@@ -154,4 +154,18 @@ public class VehicleController {
         VehicleDTO vehicleDTO = vehicleService.searchVehicle(id);
         return new ResponseUtil(200,"Found",vehicleDTO);
     }
+
+    @PutMapping( params = {"vehicleIdUnavailable"})
+    public ResponseUtil makeVehicleUnavailable(@RequestParam String vehicleIdUnavailable){
+
+        vehicleService.makeVehicleUnavailable(vehicleIdUnavailable);
+        return new ResponseUtil(200,"Booking denied",null);
+    }
+
+    @PutMapping( params = {"vehicleId"})
+    public ResponseUtil makeVehicleAvailable(@RequestParam String vehicleId){
+
+        vehicleService.makeVehicleAvailable(vehicleId);
+        return new ResponseUtil(200,"Booking denied",null);
+    }
 }

@@ -22,4 +22,7 @@ public interface VehicleService {
     String generateVehicleIds();
     int brandAndTypeCount(String brand, String type);
     long countVehicle();
+    void makeVehicleUnavailable(String vehicleId);
+
+    void makeVehicleAvailable(String vehicleId);
 }

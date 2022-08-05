@@ -3,11 +3,13 @@ package lk.easy.rental.service.impl;
 import lk.easy.rental.config.PasswordConfig;
 import lk.easy.rental.dto.CustomerDTO;
 import lk.easy.rental.entity.Customer;
+import lk.easy.rental.entity.CustomerRequest;
 import lk.easy.rental.entity.Driver;
 import lk.easy.rental.entity.User;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.CustomerRepo;
+import lk.easy.rental.repo.CustomerRequestRepo;
 import lk.easy.rental.repo.UserRepo;
 import lk.easy.rental.service.CustomerService;
 import org.modelmapper.ModelMapper;
@@ -37,6 +39,9 @@ public class CustomerServiceImpl implements CustomerService {
     CustomerRepo customerRepo;
 
     @Autowired
+    CustomerRequestRepo customerRequestRepo;
+
+    @Autowired
     UserRepo userRepo;
 
     @Autowired
@@ -63,7 +68,7 @@ public class CustomerServiceImpl implements CustomerService {
     public void saveCustomer(CustomerDTO customerDTO) {
         if (!customerRepo.existsById(customerDTO.getId())) {
             if (!userRepo.existsByUserName(customerDTO.getUser().getUserName())) {
-                customerRepo.save(mapper.map(customerDTO, Customer.class));
+                customerRequestRepo.save(mapper.map(customerDTO, CustomerRequest.class));
             } else {
                 throw new DuplicateEntryException("User Name Already Exists");
             }

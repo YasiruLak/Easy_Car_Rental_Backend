@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 /**
  * @author : Yasiru Dahanayaka
@@ -87,8 +89,11 @@ public class DriverController {
         return new ResponseUtil(200, "Driver Data Delete success", null);
     }
 
-    @GetMapping( "getAvailableDriver")
-    public ResponseUtil getAvailableDriver(){
-        return new ResponseUtil(200,"OK", driverService.getAvailableDriver());
+    @GetMapping( params = {"pickUpDate","returnDate"})
+    public ResponseUtil getAvailableDriver(@RequestParam String pickUpDate,@RequestParam String returnDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+        LocalDate pickUp = LocalDate.parse(pickUpDate,formatter);
+        LocalDate dropOff = LocalDate.parse(returnDate, formatter);
+        return new ResponseUtil(200,"OK", driverService.loadAvailableDriver(pickUp,dropOff));
     }
 }

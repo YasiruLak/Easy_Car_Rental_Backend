@@ -2,6 +2,7 @@ package lk.easy.rental.service.impl;
 
 import lk.easy.rental.dto.VehicleDTO;
 import lk.easy.rental.entity.Vehicle;
+import lk.easy.rental.enums.AvailabilityType;
 import lk.easy.rental.exception.DuplicateEntryException;
 import lk.easy.rental.exception.NotFoundException;
 import lk.easy.rental.repo.VehicleRepo;
@@ -103,5 +104,19 @@ public class VehicleServiceImpl implements VehicleService {
     @Override
     public long countVehicle() {
         return vehicleRepo.count();
+    }
+
+    @Override
+    public void makeVehicleUnavailable(String vehicleId) {
+        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
+        vehicle.setVehicleAvailability(AvailabilityType.NOT_AVAILABLE);
+        vehicleRepo.save(vehicle);
+    }
+
+    @Override
+    public void makeVehicleAvailable(String vehicleId) {
+        Vehicle vehicle = vehicleRepo.findById(vehicleId).get();
+        vehicle.setVehicleAvailability(AvailabilityType.AVAILABLE);
+        vehicleRepo.save(vehicle);
     }
 }

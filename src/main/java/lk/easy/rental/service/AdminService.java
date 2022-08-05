@@ -24,4 +24,11 @@ public interface AdminService {
     String generateAdminIds();
     long countAdmin();
     AdminDTO getAdminInUserName(String userName);
+    void acceptCustomer(CustomerDTO dto);
+
+    void denyCustomer(String denyCustomer);
+
+//    void acceptBookingRequest(String id);
+//
+//    void denyBookingRequest(String id,String reason);
 }
